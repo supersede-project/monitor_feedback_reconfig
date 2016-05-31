@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fm:featureModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fm="http://zcu.cz/yafmt/model/fm" name="MonitoringSystem" version="1.0.0">
+  <rootFeature id="monitoringsystem" name="MonitoringSystem" lower="1" upper="1">
+    <feature id="Social_Networks_Monitor" name="Social_Networks_Monitor" lower="0" upper="1">
+      <attribute id="adviceID" name="adviceID" type="string"/>
+      <group lower="1" upper="1">
+        <feature id="Social_Mention_API" name="Social_Mention_API" lower="0" upper="1">
+          <attribute id="adviceID" name="adviceID" type="string"/>
+          <feature id="Frequency" name="Frequency" lower="1" upper="1">
+            <group lower="1" upper="1">
+              <feature id="High" name="High" lower="0" upper="1">
+                <attribute id="adviceID" name="adviceID" type="string"/>
+              </feature>
+              <feature id="Medium" name="Medium" lower="0" upper="1">
+                <attribute id="adviceID" name="adviceID" type="string"/>
+              </feature>
+              <feature id="Low" name="Low" lower="0" upper="1">
+                <attribute id="adviceID" name="adviceID" type="string"/>
+              </feature>
+            </group>
+          </feature>
+          <feature id="Keywords" name="Keywords" lower="1" upper="1">
+            <group lower="1" upper="-1">
+              <feature id="Event1" name="Event1" lower="0" upper="1">
+                <attribute id="adviceID" name="adviceID" type="string"/>
+                <feature id="event1keyword1" name="event1keyword1" lower="1" upper="1"/>
+                <feature id="event1keyword2" name="event1keyword2" lower="0" upper="1">
+                  <attribute id="adviceID" name="adviceID" type="string"/>
+                </feature>
+              </feature>
+              <feature id="Event2" name="Event2" lower="0" upper="1">
+                <attribute id="adviceID" name="adviceID" type="string"/>
+                <feature id="event2keyword1" name="event2keyword1" lower="1" upper="1"/>
+                <feature id="event2keyword2" name="event2keyword2" lower="0" upper="1">
+                  <attribute id="adviceID" name="adviceID" type="string"/>
+                </feature>
+              </feature>
+              <feature id="UC_Brand" name="UC_Brand" lower="0" upper="1">
+                <attribute id="adviceID" name="adviceID" type="string"/>
+                <feature id="ucbrand" name="ucbrand" lower="1" upper="1"/>
+              </feature>
+            </group>
+          </feature>
+        </feature>
+        <feature id="S_N_M_2" name="S_N_M_2" lower="0" upper="1">
+          <attribute id="adviceID" name="adviceID" type="string"/>
+        </feature>
+      </group>
+    </feature>
+    <feature id="M2" name="M2" lower="0" upper="1">
+      <attribute id="adviceID" name="adviceID" type="string"/>
+    </feature>
+  </rootFeature>
+  <constraint value="event1keyword1 and event1keyword2 implies Medium" language="cz.zcu.yafmt.clang.BooleanConstraintLanguage"/>
+  <constraint value="event1keyword1 and not event1keyword2 implies High" language="cz.zcu.yafmt.clang.BooleanConstraintLanguage"/>
+  <constraint value="not Event1 and not Event2 and UC_Brand implies Low" language="cz.zcu.yafmt.clang.BooleanConstraintLanguage"/>
+</fm:featureModel>

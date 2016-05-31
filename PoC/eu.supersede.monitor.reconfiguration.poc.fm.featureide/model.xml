@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and abstract="true" mandatory="true" name="Monitoring_System">
+				<alt name="Social_Networks_Monitor">
+					<and mandatory="true" name="Social_Mention_API">
+						<alt mandatory="true" name="Frequency">
+							<feature mandatory="true" name="High"/>
+							<feature mandatory="true" name="Medium"/>
+							<feature mandatory="true" name="Low"/>
+						</alt>
+						<or mandatory="true" name="Keywords">
+							<and mandatory="true" name="Event1">
+								<feature mandatory="true" name="event1keyword1"/>
+								<feature name="event1keyword2"/>
+							</and>
+							<and mandatory="true" name="Event2">
+								<feature mandatory="true" name="event2keyword1"/>
+								<feature name="event2keyword2"/>
+							</and>
+							<and mandatory="true" name="UC_Brand">
+								<feature mandatory="true" name="ucbrand"/>
+							</and>
+						</or>
+					</and>
+					<feature mandatory="true" name="S_N_M_2"/>
+				</alt>
+				<feature name="M2"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<conj>
+						<var>event1keyword1</var>
+						<var>event1keyword2</var>
+					</conj>
+					<var>Medium</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<conj>
+						<var>event1keyword1</var>
+						<not>
+							<var>event1keyword2</var>
+						</not>
+					</conj>
+					<var>High</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<conj>
+						<not>
+							<var>Event1</var>
+						</not>
+						<conj>
+							<not>
+								<var>Event2</var>
+							</not>
+							<var>UC_Brand</var>
+						</conj>
+					</conj>
+					<var>Low</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

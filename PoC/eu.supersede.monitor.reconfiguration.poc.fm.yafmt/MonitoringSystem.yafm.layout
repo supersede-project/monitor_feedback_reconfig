@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ASCII"?>
+<layout:LayoutData xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:layout="http://zcu.cz/yafmt/ui/editors/fm/layout">
+  <mapping value="765 15 160 30">
+    <key href="MonitoringSystem.yafm#//@root"/>
+  </mapping>
+  <mapping value="651 135 203 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0"/>
+  </mapping>
+  <mapping value="888 140 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.1"/>
+  </mapping>
+  <mapping value="483 248 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0"/>
+  </mapping>
+  <mapping value="851 253 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.1"/>
+  </mapping>
+  <mapping/>
+  <mapping value="728 166 45 45">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0"/>
+  </mapping>
+  <mapping value="312 378 120 30">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.0"/>
+  </mapping>
+  <mapping value="806 400 120 30">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1"/>
+  </mapping>
+  <mapping value="57 518 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.0/@groups.0/@features.0"/>
+  </mapping>
+  <mapping value="239 518 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.0/@groups.0/@features.1"/>
+  </mapping>
+  <mapping value="421 518 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.0/@groups.0/@features.2"/>
+  </mapping>
+  <mapping value="348 386 45 45">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.0/@groups.0"/>
+  </mapping>
+  <mapping value="633 520 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1/@groups.0/@features.0"/>
+  </mapping>
+  <mapping value="833 517 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1/@groups.0/@features.1"/>
+  </mapping>
+  <mapping value="1030 518 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1/@groups.0/@features.2"/>
+  </mapping>
+  <mapping value="842 408 45 45">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1/@groups.0"/>
+  </mapping>
+  <mapping value="525 640 129 30">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1/@groups.0/@features.0/@features.0"/>
+  </mapping>
+  <mapping value="665 638 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1/@groups.0/@features.0/@features.1"/>
+  </mapping>
+  <mapping value="842 638 125 30">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1/@groups.0/@features.1/@features.0"/>
+  </mapping>
+  <mapping value="982 640 167 53">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1/@groups.0/@features.1/@features.1"/>
+  </mapping>
+  <mapping value="1170 638 78 30">
+    <key href="MonitoringSystem.yafm#//@root/@features.0/@groups.0/@features.0/@features.1/@groups.0/@features.2/@features.0"/>
+  </mapping>
+</layout:LayoutData>

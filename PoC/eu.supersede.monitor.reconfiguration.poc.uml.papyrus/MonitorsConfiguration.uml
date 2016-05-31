@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aom="http:///schemas/aom/_g8Hu4B3lEeapwISfcvrdmA/2" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/aom/_g8Hu4B3lEeapwISfcvrdmA/2 /monitor_reconfiguration_uml_papyrus/aom.profile.uml#_g8IV8B3lEeapwISfcvrdmA">
+  <uml:Model xmi:id="_vC4xEB3sEeapwISfcvrdmA" name="MonitorsConfiguration">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_vC-3sB3sEeapwISfcvrdmA" name="Monitors Configuration">
+      <ownedBehavior xmi:type="uml:Activity" xmi:id="_HpBHYB3vEeahmtVX4Ic2SQ" name="SocialMentAPI" node="_U5Ku0B3vEeahmtVX4Ic2SQ _WerUEB3vEeahmtVX4Ic2SQ _aSx30B3vEeahmtVX4Ic2SQ _kO3GcB3vEeahmtVX4Ic2SQ">
+        <edge xmi:type="uml:ControlFlow" xmi:id="_mWLYQB3vEeahmtVX4Ic2SQ" target="_WerUEB3vEeahmtVX4Ic2SQ" source="_U5Ku0B3vEeahmtVX4Ic2SQ"/>
+        <edge xmi:type="uml:ControlFlow" xmi:id="_nVansB3vEeahmtVX4Ic2SQ" target="_aSx30B3vEeahmtVX4Ic2SQ" source="_WerUEB3vEeahmtVX4Ic2SQ"/>
+        <edge xmi:type="uml:ControlFlow" xmi:id="_qhIVwB3vEeahmtVX4Ic2SQ" target="_kO3GcB3vEeahmtVX4Ic2SQ" source="_aSx30B3vEeahmtVX4Ic2SQ"/>
+        <node xmi:type="uml:InitialNode" xmi:id="_U5Ku0B3vEeahmtVX4Ic2SQ" name="" outgoing="_mWLYQB3vEeahmtVX4Ic2SQ"/>
+        <node xmi:type="uml:CreateObjectAction" xmi:id="_WerUEB3vEeahmtVX4Ic2SQ" name="Set Frequency" incoming="_mWLYQB3vEeahmtVX4Ic2SQ" outgoing="_nVansB3vEeahmtVX4Ic2SQ"/>
+        <node xmi:type="uml:CreateObjectAction" xmi:id="_aSx30B3vEeahmtVX4Ic2SQ" name="Set Keywords" incoming="_nVansB3vEeahmtVX4Ic2SQ" outgoing="_qhIVwB3vEeahmtVX4Ic2SQ"/>
+        <node xmi:type="uml:FlowFinalNode" xmi:id="_kO3GcB3vEeahmtVX4Ic2SQ" name="" incoming="_qhIVwB3vEeahmtVX4Ic2SQ"/>
+      </ownedBehavior>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vEON0B3sEeapwISfcvrdmA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vEON0h3sEeapwISfcvrdmA" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vEON0x3sEeapwISfcvrdmA" key="Version" value="0.0.3"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vEON1B3sEeapwISfcvrdmA" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vEON1R3sEeapwISfcvrdmA" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vEON1h3sEeapwISfcvrdmA" key="Date" value="2016-05-19"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vEON1x3sEeapwISfcvrdmA" key="Author" value=""/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vEON0R3sEeapwISfcvrdmA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="/monitor_reconfiguration_uml_papyrus/aom.profile.uml#_g8IV8B3lEeapwISfcvrdmA"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="/monitor_reconfiguration_uml_papyrus/aom.profile.uml#_tYH5YB3hEeapwISfcvrdmA"/>
+    </profileApplication>
+  </uml:Model>
+  <aom:Joinpoint xmi:id="_fX1tIB3vEeahmtVX4Ic2SQ" base_RedefinableElement="_WerUEB3vEeahmtVX4Ic2SQ"/>
+  <aom:Joinpoint xmi:id="_hpHzQB3vEeahmtVX4Ic2SQ" base_RedefinableElement="_aSx30B3vEeahmtVX4Ic2SQ"/>
+  <aom:Pointcut xmi:id="_E9FHUB54Eea_MeTkVL_YSQ" base_RedefinableElement="_vC-3sB3sEeapwISfcvrdmA"/>
+  <aom:Advice xmi:id="_H_jZ0B54Eea_MeTkVL_YSQ" pointcut="_E9FHUB54Eea_MeTkVL_YSQ" base_Class="_HpBHYB3vEeahmtVX4Ic2SQ"/>
+</xmi:XMI>

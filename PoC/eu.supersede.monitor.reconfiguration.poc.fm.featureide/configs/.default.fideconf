@@ -1,0 +1,20 @@
+# Lists all features from the model with manual (first digit) and automatic (second digit) selection
+# 0 = deselected, 1 = selected, 2 = undefined
+21Monitoring_System
+11Social_Networks_Monitor
+11Social_Mention_API
+21Frequency
+20High
+21Medium
+20Low
+21Keywords
+21Event1
+21event1keyword1
+12event1keyword2
+22Event2
+22event2keyword1
+22event2keyword2
+22UC_Brand
+22ucbrand
+20S_N_M_2
+22M2
