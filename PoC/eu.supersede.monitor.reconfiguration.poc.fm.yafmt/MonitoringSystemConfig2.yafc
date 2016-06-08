@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fc:FeatureConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fc="http://zcu.cz/yafmt/model/fc" name="MonitoringSystemConfig1" version="1.0.0">
+<fc:FeatureConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fc="http://zcu.cz/yafmt/model/fc" name="MonitoringSystemConfig2" version="1.0.0">
   <featureModel href="MonitoringSystem.yafm#/"/>
   <featureModelCopy name="MonitoringSystem" version="1.0.0">
     <rootFeature id="monitoringsystem" name="MonitoringSystem" lower="1" upper="1">
@@ -58,10 +58,11 @@
         </selection>
         <selection id="f_2035383236">
           <selection id="Keywords">
-            <selection id="Event1"/>
+            <selection id="Event2"/>
           </selection>
           <selection id="f_403360289">
             <selection id="f_540100723"/>
+            <selection id="f_1480769757"/>
           </selection>
         </selection>
       </selection>

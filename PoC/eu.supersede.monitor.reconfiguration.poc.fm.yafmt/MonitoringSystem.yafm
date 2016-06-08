@@ -2,56 +2,49 @@
 <fm:featureModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fm="http://zcu.cz/yafmt/model/fm" name="MonitoringSystem" version="1.0.0">
   <rootFeature id="monitoringsystem" name="MonitoringSystem" lower="1" upper="1">
     <feature id="Social_Networks_Monitor" name="Social_Networks_Monitor" lower="0" upper="1">
-      <attribute id="adviceID" name="adviceID" type="string"/>
-      <group lower="1" upper="1">
-        <feature id="Social_Mention_API" name="Social_Mention_API" lower="0" upper="1">
-          <attribute id="adviceID" name="adviceID" type="string"/>
-          <feature id="Frequency" name="Frequency" lower="1" upper="1">
-            <group lower="1" upper="1">
-              <feature id="High" name="High" lower="0" upper="1">
-                <attribute id="adviceID" name="adviceID" type="string"/>
-              </feature>
-              <feature id="Medium" name="Medium" lower="0" upper="1">
-                <attribute id="adviceID" name="adviceID" type="string"/>
-              </feature>
-              <feature id="Low" name="Low" lower="0" upper="1">
-                <attribute id="adviceID" name="adviceID" type="string"/>
-              </feature>
-            </group>
-          </feature>
+      <feature id="Social_Mention_API" name="Twitter_Monitoring" lower="1" upper="1">
+        <feature id="Frequency" name="Frequency" lower="1" upper="1">
+          <group lower="1" upper="1">
+            <feature id="High" name="High" lower="0" upper="1"/>
+            <feature id="Medium" name="Medium" lower="0" upper="1"/>
+            <feature id="Low" name="Low" lower="0" upper="1"/>
+          </group>
+        </feature>
+        <feature id="f_2035383236" name="Parameters" lower="1" upper="1">
           <feature id="Keywords" name="Keywords" lower="1" upper="1">
             <group lower="1" upper="-1">
-              <feature id="Event1" name="Event1" lower="0" upper="1">
-                <attribute id="adviceID" name="adviceID" type="string"/>
-                <feature id="event1keyword1" name="event1keyword1" lower="1" upper="1"/>
-                <feature id="event1keyword2" name="event1keyword2" lower="0" upper="1">
-                  <attribute id="adviceID" name="adviceID" type="string"/>
-                </feature>
-              </feature>
-              <feature id="Event2" name="Event2" lower="0" upper="1">
-                <attribute id="adviceID" name="adviceID" type="string"/>
-                <feature id="event2keyword1" name="event2keyword1" lower="1" upper="1"/>
-                <feature id="event2keyword2" name="event2keyword2" lower="0" upper="1">
-                  <attribute id="adviceID" name="adviceID" type="string"/>
-                </feature>
-              </feature>
-              <feature id="UC_Brand" name="UC_Brand" lower="0" upper="1">
-                <attribute id="adviceID" name="adviceID" type="string"/>
-                <feature id="ucbrand" name="ucbrand" lower="1" upper="1"/>
-              </feature>
+              <feature id="Event1" name="KGroup1" lower="0" upper="1"/>
+              <feature id="Event2" name="KGroup2" lower="0" upper="1"/>
+              <feature id="UC_Brand" name="KGroup3" lower="0" upper="1"/>
+            </group>
+          </feature>
+          <feature id="f_403360289" name="Accounts" lower="1" upper="1">
+            <group lower="1" upper="-1">
+              <feature id="f_540100723" name="AGroup1" lower="0" upper="1"/>
+              <feature id="f_1480769757" name="AGroup2" lower="0" upper="1"/>
             </group>
           </feature>
         </feature>
-        <feature id="S_N_M_2" name="S_N_M_2" lower="0" upper="1">
-          <attribute id="adviceID" name="adviceID" type="string"/>
-        </feature>
-      </group>
+      </feature>
     </feature>
-    <feature id="M2" name="M2" lower="0" upper="1">
-      <attribute id="adviceID" name="adviceID" type="string"/>
+    <feature id="M2" name="Market_Places_Monitor" lower="0" upper="1">
+      <feature id="f_1055104605" name="MarketPlaces_Monitoring" lower="1" upper="1">
+        <feature id="f_1301226087" name="Frequency" lower="1" upper="1">
+          <group lower="1" upper="1">
+            <feature id="f_1901936997" name="High" lower="0" upper="1"/>
+            <feature id="f_371095442" name="Medium" lower="0" upper="1"/>
+            <feature id="f_528130099" name="Low" lower="0" upper="1"/>
+          </group>
+        </feature>
+        <feature id="f_1386304351" name="Parameters" lower="1" upper="1">
+          <feature id="f_1254155463" name="Applications" lower="1" upper="1">
+            <group lower="1" upper="-1">
+              <feature id="f_1425818986" name="AppGroup1" lower="0" upper="1"/>
+              <feature id="f_1529096352" name="AppGroup2" lower="0" upper="1"/>
+            </group>
+          </feature>
+        </feature>
+      </feature>
     </feature>
   </rootFeature>
-  <constraint value="event1keyword1 and event1keyword2 implies Medium" language="cz.zcu.yafmt.clang.BooleanConstraintLanguage"/>
-  <constraint value="event1keyword1 and not event1keyword2 implies High" language="cz.zcu.yafmt.clang.BooleanConstraintLanguage"/>
-  <constraint value="not Event1 and not Event2 and UC_Brand implies Low" language="cz.zcu.yafmt.clang.BooleanConstraintLanguage"/>
 </fm:featureModel>
