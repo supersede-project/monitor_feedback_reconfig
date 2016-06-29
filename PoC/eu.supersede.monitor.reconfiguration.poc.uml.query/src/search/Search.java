@@ -57,7 +57,7 @@ public class Search {
 	}
 	
 	public void searchClassesInstances () throws ViatraQueryException{
-		//Searching classes realizations
+		//Searching classes instances
 		InstancesMatcher matcher = queries.getInstances(engine);
 		Collection<InstancesMatch> matches = matcher.getAllMatches();
 		System.out.println("Classes Instances: " + matches);
@@ -71,7 +71,7 @@ public class Search {
 	}
 	
 	public void searchMonitors () throws ViatraQueryException{
-		//Searching classes realizations
+		//Searching monitors
 		MonitorsMatcher matcher = queries.getMonitors(engine);
 		Collection<MonitorsMatch> matches = matcher.getAllMatches();
 		System.out.println("Monitors: " + matches);
