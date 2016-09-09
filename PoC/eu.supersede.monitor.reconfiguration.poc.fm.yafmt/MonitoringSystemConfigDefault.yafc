@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fc:FeatureConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fc="http://zcu.cz/yafmt/model/fc" name="MonitoringSystemConfig2" version="1.0.0">
+  <featureModel href="MonitoringSystem.yafm#/"/>
+  <featureModelCopy name="MonitoringSystem" version="1.0.0">
+    <rootFeature id="monitoringsystem" name="MonitoringSystem" lower="1" upper="1">
+      <feature id="Social_Networks_Monitor" name="Social_Networks_Monitor" lower="0" upper="1">
+        <feature id="Social_Mention_API" name="Twitter_Monitoring" lower="1" upper="1">
+          <feature id="Keywords" name="KeywordExpression" lower="1" upper="1">
+            <group lower="1" upper="1">
+              <feature id="Event1" name="keywordExpression1" lower="0" upper="1"/>
+              <feature id="Event2" name="keywordExpression2" lower="0" upper="1"/>
+            </group>
+          </feature>
+        </feature>
+      </feature>
+      <feature id="M2" name="Market_Places_Monitor" lower="0" upper="1">
+        <feature id="f_1055104605" name="Google Play Monitoring" lower="0" upper="1">
+          <feature id="f_1301226087" name="timeSlot" lower="1" upper="1">
+            <group lower="1" upper="1">
+              <feature id="f_1901936997" name="High" lower="0" upper="1"/>
+              <feature id="f_528130099" name="Low" lower="0" upper="1"/>
+            </group>
+          </feature>
+          <feature id="f_1032312946" name="Tool" lower="1" upper="1">
+            <group lower="1" upper="1">
+              <feature id="f_253866617" name="GooglePlay API" lower="0" upper="1"/>
+              <feature id="f_128106798" name="AppTweak" lower="0" upper="1"/>
+            </group>
+          </feature>
+        </feature>
+        <feature id="f_286909579" name="App Store Monitoring" lower="0" upper="1">
+          <feature id="Frequency" name="timeSlot" lower="1" upper="1">
+            <group lower="1" upper="1">
+              <feature id="High" name="High" lower="0" upper="1"/>
+              <feature id="Low" name="Low" lower="0" upper="1"/>
+            </group>
+          </feature>
+          <feature id="f_615239129" name="Tool" lower="1" upper="1">
+            <group lower="1" upper="1">
+              <feature id="f_742875905" name="iTunesApple" lower="0" upper="1"/>
+              <feature id="f_425612960" name="AppTweak" lower="0" upper="1"/>
+            </group>
+          </feature>
+        </feature>
+      </feature>
+    </rootFeature>
+  </featureModelCopy>
+  <rootSelection id="monitoringsystem">
+    <selection id="Social_Networks_Monitor">
+      <selection id="Social_Mention_API">
+        <selection id="Keywords">
+          <selection id="Event1"/>
+        </selection>
+      </selection>
+    </selection>
+    <selection id="M2">
+      <selection id="f_1055104605">
+        <selection id="f_1301226087">
+          <selection id="f_1901936997"/>
+        </selection>
+        <selection id="f_1032312946">
+          <selection id="f_253866617"/>
+        </selection>
+      </selection>
+      <selection id="f_286909579">
+        <selection id="Frequency">
+          <selection id="High"/>
+        </selection>
+        <selection id="f_615239129">
+          <selection id="f_742875905"/>
+        </selection>
+      </selection>
+    </selection>
+  </rootSelection>
+</fc:FeatureConfiguration>
