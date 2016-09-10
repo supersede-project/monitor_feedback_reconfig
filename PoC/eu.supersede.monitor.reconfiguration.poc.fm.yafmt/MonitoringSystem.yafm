@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fm:featureModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fm="http://zcu.cz/yafmt/model/fm" name="MonitoringSystem" version="1.0.0">
   <rootFeature id="monitoringsystem" name="MonitoringSystem" lower="1" upper="1">
-    <feature id="Social_Networks_Monitor" name="Social_Networks_Monitor" lower="0" upper="1">
-      <feature id="Social_Mention_API" name="Twitter_Monitoring" lower="1" upper="1">
+    <feature id="Social_Networks_Monitor" name="Social_Networks" lower="0" upper="1">
+      <feature id="Social_Mention_API" name="Twitter" lower="1" upper="1">
         <feature id="Keywords" name="KeywordExpression" lower="1" upper="1">
           <group lower="1" upper="1">
             <feature id="Event1" name="keywordExpression1" lower="0" upper="1"/>
@@ -11,8 +11,8 @@
         </feature>
       </feature>
     </feature>
-    <feature id="M2" name="Market_Places_Monitor" lower="0" upper="1">
-      <feature id="f_1055104605" name="Google Play Monitoring" lower="0" upper="1">
+    <feature id="M2" name="Market_Places" lower="0" upper="1">
+      <feature id="f_1055104605" name="GooglePlay" lower="0" upper="1">
         <feature id="f_1301226087" name="timeSlot" lower="1" upper="1">
           <group lower="1" upper="1">
             <feature id="f_1901936997" name="High" lower="0" upper="1"/>
@@ -21,12 +21,12 @@
         </feature>
         <feature id="f_1032312946" name="Tool" lower="1" upper="1">
           <group lower="1" upper="1">
-            <feature id="f_253866617" name="GooglePlay API" lower="0" upper="1"/>
+            <feature id="f_253866617" name="GooglePlay_API" lower="0" upper="1"/>
             <feature id="f_128106798" name="AppTweak" lower="0" upper="1"/>
           </group>
         </feature>
       </feature>
-      <feature id="f_286909579" name="App Store Monitoring" lower="0" upper="1">
+      <feature id="f_286909579" name="AppStore" lower="0" upper="1">
         <feature id="Frequency" name="timeSlot" lower="1" upper="1">
           <group lower="1" upper="1">
             <feature id="High" name="High" lower="0" upper="1"/>
@@ -35,7 +35,7 @@
         </feature>
         <feature id="f_615239129" name="Tool" lower="1" upper="1">
           <group lower="1" upper="1">
-            <feature id="f_742875905" name="iTunesApple" lower="0" upper="1"/>
+            <feature id="f_742875905" name="iTunes_RSS" lower="0" upper="1"/>
             <feature id="f_425612960" name="AppTweak" lower="0" upper="1"/>
           </group>
         </feature>
