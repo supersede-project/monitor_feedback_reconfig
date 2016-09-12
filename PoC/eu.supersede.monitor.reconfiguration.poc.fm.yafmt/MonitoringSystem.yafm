@@ -42,4 +42,6 @@
       </feature>
     </feature>
   </rootFeature>
+  <constraint value="not f_253866617 implies f_425612960" language="cz.zcu.yafmt.clang.BooleanConstraintLanguage" description=""/>
+  <constraint value="not f_128106798 implies f_253866617" language="cz.zcu.yafmt.clang.BooleanConstraintLanguage"/>
 </fm:featureModel>
