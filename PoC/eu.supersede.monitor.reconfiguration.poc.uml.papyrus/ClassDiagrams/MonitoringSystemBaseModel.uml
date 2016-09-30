@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_HhPv0CyzEeaIzdWnkCl-Vg" name="RootElement">
   <packagedElement xmi:type="uml:Class" xmi:id="_AsJRgCy5EealKu3_PJbmWg" name="AMonitorConfiguration" isAbstract="true">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_MSELwCy5EealKu3_PJbmWg" name="name">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MSELwCy5EealKu3_PJbmWg" name="toolName">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_P7nsYCy5EealKu3_PJbmWg" name="state">
@@ -33,7 +33,7 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_AqhZgCy8EealKu3_PJbmWg" name="" visibility="public"/>
   <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_BW758CzEEeazLJ9R2W1UzA" name="OlympicGamesTwitterMonitor" classifier="_dit7UC1VEeavvcSdbQigPQ">
     <slot xmi:type="uml:Slot" xmi:id="_EYsawCzEEeazLJ9R2W1UzA" definingFeature="_MSELwCy5EealKu3_PJbmWg">
-      <value xmi:type="uml:LiteralString" xmi:id="_cca5gCzEEeazLJ9R2W1UzA" name="name" value="TwitterMonitoring"/>
+      <value xmi:type="uml:LiteralString" xmi:id="_cca5gCzEEeazLJ9R2W1UzA" value="TwitterAPI"/>
     </slot>
     <slot xmi:type="uml:Slot" xmi:id="_qmn48CzFEeazLJ9R2W1UzA" definingFeature="_P7nsYCy5EealKu3_PJbmWg">
       <value xmi:type="uml:LiteralString" xmi:id="_jDKB4C1REeavvcSdbQigPQ" value="active"/>
@@ -45,7 +45,7 @@
       <value xmi:type="uml:LiteralString" xmi:id="_qGIVYC1REeavvcSdbQigPQ" value="http://localhost:9092"/>
     </slot>
     <slot xmi:type="uml:Slot" xmi:id="_38npsCzFEeazLJ9R2W1UzA" definingFeature="_0ccFgIcwEeaCEY_FCabm7w">
-      <value xmi:type="uml:LiteralString" xmi:id="_sexAsC1REeavvcSdbQigPQ" value="(keyword1 AND keyword2)"/>
+      <value xmi:type="uml:LiteralString" xmi:id="_sexAsC1REeavvcSdbQigPQ" value="account1"/>
     </slot>
     <slot xmi:type="uml:Slot" xmi:id="_Q0qigIc1EeaCEY_FCabm7w" definingFeature="_UNdVACy5EealKu3_PJbmWg">
       <value xmi:type="uml:LiteralString" xmi:id="_Q0qigYc1EeaCEY_FCabm7w" value="olympicGamesTwitterMonitoring"/>
@@ -66,13 +66,13 @@
   </packagedElement>
   <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_ZQsXYC1TEeavvcSdbQigPQ" name="OlympicGamesMarketPlacesMonitor" classifier="_uOvMsC1VEeavvcSdbQigPQ">
     <slot xmi:type="uml:Slot" xmi:id="_1Rg90C1TEeavvcSdbQigPQ" definingFeature="_MSELwCy5EealKu3_PJbmWg">
-      <value xmi:type="uml:LiteralString" xmi:id="_7wDukC1TEeavvcSdbQigPQ" value="MarketPlacesMonitor"/>
+      <value xmi:type="uml:LiteralString" xmi:id="_7wDukC1TEeavvcSdbQigPQ" value="GooglePlayAPI"/>
     </slot>
     <slot xmi:type="uml:Slot" xmi:id="__CdTcC1TEeavvcSdbQigPQ" definingFeature="_qIJdIIcuEeaCEY_FCabm7w">
       <value xmi:type="uml:LiteralString" xmi:id="_AmwXwC1UEeavvcSdbQigPQ" value="olympicGamesPlayer"/>
     </slot>
     <slot xmi:type="uml:Slot" xmi:id="_DOZIYC1UEeavvcSdbQigPQ" definingFeature="_R5pfUCy5EealKu3_PJbmWg">
-      <value xmi:type="uml:LiteralInteger" xmi:id="_GpD4cC1UEeavvcSdbQigPQ" name="800" value="800"/>
+      <value xmi:type="uml:LiteralInteger" xmi:id="_GpD4cC1UEeavvcSdbQigPQ" value="800"/>
     </slot>
     <slot xmi:type="uml:Slot" xmi:id="_Ijzt4C1UEeavvcSdbQigPQ" definingFeature="_S_VVACy5EealKu3_PJbmWg">
       <value xmi:type="uml:LiteralString" xmi:id="_MQ2AUC1UEeavvcSdbQigPQ" value="http://localhost:9092"/>
@@ -99,7 +99,7 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_uOvMsC1VEeavvcSdbQigPQ" name="MarketPlacesMonitorConfiguration">
     <generalization xmi:type="uml:Generalization" xmi:id="_39waQC1WEeavvcSdbQigPQ" general="_AsJRgCy5EealKu3_PJbmWg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_qIJdIIcuEeaCEY_FCabm7w" name="app">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_qIJdIIcuEeaCEY_FCabm7w" name="packageName">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
