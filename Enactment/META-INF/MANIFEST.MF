@@ -10,4 +10,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: cz.zcu.yafmt.model.fm,
  eu.supersede.dynadapt.dsl.aspect,
- org.eclipse.uml2.uml
+ org.eclipse.emf.mwe.utils,
+ org.eclipse.uml2.uml,
+ org.junit;version="4.12.0"
