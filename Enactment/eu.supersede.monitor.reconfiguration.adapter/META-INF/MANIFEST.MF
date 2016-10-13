@@ -13,5 +13,6 @@ Import-Package: cz.zcu.yafmt.model.fm,
  eu.supersede.dynadapt.dsl.parser.antlr,
  eu.supersede.dynadapt.dsl.ui.contentassist.antlr,
  org.eclipse.emf.mwe.utils,
- org.eclipse.uml2.uml,
+ org.eclipse.uml2.uml;
+ org.eclipse.viatra.query.runtime.exception,
  org.junit;version="4.12.0"

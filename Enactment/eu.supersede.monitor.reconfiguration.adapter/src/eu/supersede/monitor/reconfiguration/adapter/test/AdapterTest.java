@@ -14,17 +14,22 @@ import eu.supersede.dynadapt.featuremodel.fc.FeatureConfigLAO;
 import eu.supersede.dynadapt.featuremodel.fc.FeatureConfigSUPERSEDE;
 import eu.supersede.dynadapt.featuremodel.fc.IFeatureConfigLAO;
 import eu.supersede.dynadapt.modelrepository.repositoryaccess.ModelRepository;
+import eu.supersede.monitor.reconfiguration.adapter.Adapter;
+
 import org.eclipse.emf.mwe.utils.StandaloneSetup;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 public class AdapterTest {
 
 	String repository = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/";
 	String featureConfigPath = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/features/configurations/MonitoringSystemConfigDefault.yafc";
 	String featureModelPath = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/features/models/MonitoringSystem.yafm";
-
+	String localPath = "file:/home/jmotger/Escritorio/Example_Adapter/eu.supersede.monitor.reconfiguration.models/bin/";
+	
 	Map<String, String> modelsLocation;
 
 	ModelRepository mr = null;
+	Adapter a = null;
 
 	URL url = null;
 
@@ -39,9 +44,21 @@ public class AdapterTest {
 		modelsLocation.put("profiles", "uml_models/profiles/");
 		modelsLocation.put("patterns", "patterns/");
 		modelsLocation.put("features", "features/models/");
-
+		
+		url = new URL(localPath);
 		mr = new ModelRepository(repository,url);
 		fcLAO = new FeatureConfigLAO(new FeatureConfigDAO());
+	}
+	
+	@Test
+	public void adapt() {
+		try {
+			a = new Adapter(mr);
+			List<Aspect> a = mr.getAspectModels("GooglePlay_API_GooglePlay", modelsLocation);
+			//a.adapt(a.get(0).getFeature().getFeatureModel(), a.get(0), baseModel);
+		} catch (ViatraQueryException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
