@@ -12,7 +12,6 @@ Import-Package: cz.zcu.yafmt.model.fm,
  eu.supersede.dynadapt.dsl.aspect,
  eu.supersede.dynadapt.dsl.parser.antlr,
  eu.supersede.dynadapt.dsl.ui.contentassist.antlr,
- eu.supersede.dynadapt.enactor.package1,
  org.eclipse.emf.mwe.utils,
  org.eclipse.uml2.uml,
  org.junit;version="4.12.0"
