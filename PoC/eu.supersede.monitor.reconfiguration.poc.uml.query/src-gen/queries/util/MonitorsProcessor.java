@@ -4,7 +4,6 @@
 package queries.util;
 
 import org.eclipse.uml2.uml.InstanceSpecification;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.viatra.query.runtime.api.IMatchProcessor;
 import queries.MonitorsMatch;
 
@@ -23,7 +22,7 @@ public abstract class MonitorsProcessor implements IMatchProcessor<MonitorsMatch
    * @param pGeneralization the value of pattern parameter generalization in the currently processed match
    * 
    */
-  public abstract void process(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization);
+  public abstract void process(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization);
   
   @Override
   public void process(final MonitorsMatch match) {
