@@ -1,0 +1,22 @@
+[comment encoding = UTF-8 /]
+[module uml2json('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+
+[template public generateElement(mModel : Model)]
+[comment @main/]
+[file (mModel.name.concat('.json'), false, 'UTF-8')]
+[for (bInstance : InstanceSpecification | mModel.eContents(InstanceSpecification))]
+[if (not bInstance.oclIsUndefined())]
+[bInstance.name.toUpperFirst()/].json = {
+[for (p: Slot | bInstance.slot)]
+[let val : ValueSpecification = p.value->first()]
+'[val.name/]':[val.stringValue()/],
+[/let]
+[/for]
+'active':true
+}
+[/if]
+[/for]
+
+[/file]
+[/template]
