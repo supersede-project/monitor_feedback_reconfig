@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
@@ -33,12 +34,12 @@ public class Adapter implements IAdapter {
 	
 	String repository = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/";
 	
-	public Adapter(ModelRepository mr) throws ViatraQueryException {
+	public Adapter(ModelRepository mr, ModelManager mm) throws Exception {
 		this.mr = mr;
 		this.parser = new AdaptationParser();
-		this.mm = new ModelManager();
-		this.mq = new ModelQuery(mm);
 		this.ma = new ModelAdapter();
+		this.mm = mm;
+		this.mq = new ModelQuery(mm);
 		modelsLocation = new HashMap<String, String>();
 		modelsLocation.put("aspects", "adaptability_models/");
 		modelsLocation.put("variants", "uml_models/variants/");
@@ -48,20 +49,25 @@ public class Adapter implements IAdapter {
 	}
 
 	@Override
-	public void adapt(FeatureModel variability, Aspect adaptationModel, Model baseModel) throws ViatraQueryException {
+	public void adapt(FeatureModel variability, Aspect adaptationModel, Model baseModel) throws Exception {
 		
 		List<Feature> features = listFeatures(variability.getRoot());
 
 		for (Feature f : features) {
+			System.out.println("Feature ID: " + f.getId());
 			List<Aspect> aspects = mr.getAspectModels(f.getId(), modelsLocation);
+			System.out.println("Adaptations for feature: " + aspects.size());
 			for (Aspect a : aspects) {
+				System.out.println("	Aspect name: " + a.getName());
 				//parser.parseAdaptationModel(aspects.get(0));
 				Stereotype role = null;
 				List<Pointcut> pointcuts = a.getPointcuts();
 				for (Pointcut p : pointcuts) {
 					role = p.getRole();
+					System.out.println("		Role: " + role);
 					List<Element> elements = (List<Element>) mq.query(p.getName(), baseModel.eResource());
 					for (Element e : elements) {
+						System.out.println("			Applied to: " + ((NamedElement) e).getName());
 						ma.stereotypeElement(e, p.getRole());
 					}
 				}
@@ -76,7 +82,8 @@ public class Adapter implements IAdapter {
 	private List<Feature> listFeatures(Feature root) {
 		List<Feature> features = new ArrayList<>();
 		features.add(root);
-		if (root.getFeatures().size() > 0) features.addAll(listFeatures(root));
+		if (root.getFeatures().size() > 0) 
+			for (Feature f : root.getFeatures()) features.addAll(listFeatures(f));
 		return features;
 	}
 

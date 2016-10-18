@@ -13,14 +13,18 @@ import eu.supersede.dynadapt.featuremodel.fc.FeatureConfigDAO;
 import eu.supersede.dynadapt.featuremodel.fc.FeatureConfigLAO;
 import eu.supersede.dynadapt.featuremodel.fc.FeatureConfigSUPERSEDE;
 import eu.supersede.dynadapt.featuremodel.fc.IFeatureConfigLAO;
+import eu.supersede.dynadapt.featuremodel.selection.SelectionSUPERSEDE;
+import eu.supersede.dynadapt.model.ModelManager;
 import eu.supersede.dynadapt.modelrepository.repositoryaccess.ModelRepository;
 import eu.supersede.monitor.reconfiguration.adapter.Adapter;
 
 import org.eclipse.emf.mwe.utils.StandaloneSetup;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 public class AdapterTest {
 
+	String baseModelPath = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/uml_models/base/MonitoringSystemBaseModel.uml";
 	String repository = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/";
 	String featureConfigPath = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/features/configurations/MonitoringSystemConfigDefault.yafc";
 	String featureModelPath = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/features/models/MonitoringSystem.yafm";
@@ -29,7 +33,8 @@ public class AdapterTest {
 	Map<String, String> modelsLocation;
 
 	ModelRepository mr = null;
-	Adapter a = null;
+	ModelManager mm = null;
+	Adapter adapter = null;
 
 	URL url = null;
 
@@ -47,41 +52,44 @@ public class AdapterTest {
 		
 		url = new URL(localPath);
 		mr = new ModelRepository(repository,url);
+		mm = new ModelManager(baseModelPath);
 		fcLAO = new FeatureConfigLAO(new FeatureConfigDAO());
 	}
 	
 	@Test
 	public void adapt() {
 		try {
-			a = new Adapter(mr);
+			adapter = new Adapter(mr, mm);
+			Model baseModel = mm.loadUMLModel(baseModelPath);
 			List<Aspect> a = mr.getAspectModels("GooglePlay_API_GooglePlay", modelsLocation);
-			//a.adapt(a.get(0).getFeature().getFeatureModel(), a.get(0), baseModel);
-		} catch (ViatraQueryException e) {
+			
+			adapter.adapt(a.get(0).getFeature().getFeatureModel(), a.get(0), baseModel);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	@Test
+	/*@Test
 	public void validAspectLoading() {
 
 		List<Aspect> a = mr.getAspectModels("GooglePlay_API_GooglePlay", modelsLocation);
-		System.out.print(a.get(0).getFeature().getId());
+		System.out.println(a.get(0).getFeature().getId());
 
-	}
+	}*/
 
 	/**
 	 * This test shows how from a SelectionSUPERSEDE of a FeatureConfigSUPERSEDE
 	 * model its corresponding adaptation models can be retrieved.
 	 */
+	/*
 	@Test
 	public void testGetValidFeatureAspectsForASelection() {
 		FeatureConfigSUPERSEDE fc = fcLAO.getFeatureConfigSUPERSEDE(featureConfigPath, featureModelPath);
-		/* Example with google play api - in this iteration selection #5 */
 		String featureId = fc.getSelections().get(5).getFeature().getId();
 
 		List<Aspect> a = mr.getAspectModels(featureId, modelsLocation);
 
 		System.out.print(a.get(0).getFeature().getId());
-	}
+	}*/
 
 }

@@ -33,3 +33,8 @@ pattern monitors(client, supplier, generalization) {
 	Realization.client(realization, client);
 
 }
+
+pattern timeSlot(instance) {
+	Slot.definingFeature.name(instance, name);
+	check(name.equals("timeSlot"));
+}
