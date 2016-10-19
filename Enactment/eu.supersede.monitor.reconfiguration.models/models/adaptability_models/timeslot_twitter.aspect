@@ -10,7 +10,7 @@ aspect timeslottwitter {
 		composition updateTimeSlot{
 			feature_enabled true,
 			jointpointRole ADM.Joinpoint,
-			action update value '300'
+			action update value '500'
 		}
 	}
 }

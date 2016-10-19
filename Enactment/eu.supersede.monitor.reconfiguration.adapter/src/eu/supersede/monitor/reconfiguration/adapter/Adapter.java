@@ -17,6 +17,7 @@ import cz.zcu.yafmt.model.fm.FeatureModel;
 import eu.supersede.dynadapt.adapter.ModelAdapter;
 import eu.supersede.dynadapt.aom.dsl.parser.AdaptationParser;
 import eu.supersede.dynadapt.dsl.aspect.ActionOptionType;
+import eu.supersede.dynadapt.dsl.aspect.impl.ActionImpl;
 import eu.supersede.dynadapt.dsl.aspect.impl.UpdateValueImpl;
 import eu.supersede.dynadapt.dsl.aspect.Aspect;
 import eu.supersede.dynadapt.dsl.aspect.Composition;
@@ -81,12 +82,16 @@ public class Adapter implements IAdapter {
 					}
 				}
 				Model variant = a.getAdvice();
-				ActionOptionType actionOptionType = a.getCompositions().get(0).getAction();
+				
+				//Select composition
+				Composition c = a.getCompositions().get(0);
+				
+				ActionOptionType actionOptionType = c.getAction();
 				if (actionOptionType instanceof UpdateValueImpl) {
 					Object value = actionOptionType.eGet(actionOptionType.eClass().getEStructuralFeature("value"));
 					ma.applyUpdateCompositionDirective(baseModel, value, role);
 				} else {
-					ma.applyCompositionDirective(a.getCompositions().get(0), baseModel, role, variant);
+					ma.applyCompositionDirective(a.getCompositions().get(0), baseModel, role, c.getAdvice(), variant);
 				}
 			}
 		}
