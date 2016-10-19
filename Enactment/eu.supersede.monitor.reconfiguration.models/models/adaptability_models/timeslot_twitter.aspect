@@ -1,7 +1,7 @@
-aspect twitter_timeslot {
+aspect timeslottwitter {
 	feature MonitoringSystem.MonitoringSystem.Social_Networks.Twitter.timeSlot,
 	pointcuts{	
-		pointcut timeSlot{
+		pointcut Twitter{
 			pattern patterns.timeSlot,
 			role ADM.Joinpoint
 		}

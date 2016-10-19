@@ -8,6 +8,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
+import cz.zcu.yafmt.model.fm.FeatureModel;
 import eu.supersede.dynadapt.dsl.aspect.Aspect;
 import eu.supersede.dynadapt.featuremodel.fc.FeatureConfigDAO;
 import eu.supersede.dynadapt.featuremodel.fc.FeatureConfigLAO;
@@ -28,7 +29,7 @@ public class AdapterTest {
 	String repository = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/";
 	String featureConfigPath = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/features/configurations/MonitoringSystemConfigDefault.yafc";
 	String featureModelPath = "platform:/resource/eu.supersede.monitor.reconfiguration.models/models/features/models/MonitoringSystem.yafm";
-	String localPath = "file:/home/jmotger/Escritorio/Example_Adapter/eu.supersede.monitor.reconfiguration.models/bin/";
+	String localPath = "file:/home/jmotger/Escritorio/SUPERSEDE/monitor_feedback_reconfig/Enactment/eu.supersede.monitor.reconfiguration.models/bin/";
 	
 	Map<String, String> modelsLocation;
 
@@ -37,7 +38,7 @@ public class AdapterTest {
 	Adapter adapter = null;
 
 	URL url = null;
-
+	
 	IFeatureConfigLAO fcLAO = null;
 
 	@Before
@@ -61,9 +62,11 @@ public class AdapterTest {
 		try {
 			adapter = new Adapter(mr, mm);
 			Model baseModel = mm.loadUMLModel(baseModelPath);
-			List<Aspect> a = mr.getAspectModels("GooglePlay_API_GooglePlay", modelsLocation);
 			
-			adapter.adapt(a.get(0).getFeature().getFeatureModel(), a.get(0), baseModel);
+			FeatureModel featureModel = mm.loadFeatureModel(featureModelPath);
+			List<Aspect> a = mr.getAspectModels("timeSlot_twitter", modelsLocation);
+
+			adapter.adapt(featureModel, a.get(0), baseModel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
