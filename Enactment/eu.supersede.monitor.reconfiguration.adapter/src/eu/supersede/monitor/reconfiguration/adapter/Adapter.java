@@ -1,11 +1,16 @@
 package eu.supersede.monitor.reconfiguration.adapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Stereotype;
@@ -17,7 +22,6 @@ import cz.zcu.yafmt.model.fm.FeatureModel;
 import eu.supersede.dynadapt.adapter.ModelAdapter;
 import eu.supersede.dynadapt.aom.dsl.parser.AdaptationParser;
 import eu.supersede.dynadapt.dsl.aspect.ActionOptionType;
-import eu.supersede.dynadapt.dsl.aspect.impl.ActionImpl;
 import eu.supersede.dynadapt.dsl.aspect.impl.UpdateValueImpl;
 import eu.supersede.dynadapt.dsl.aspect.Aspect;
 import eu.supersede.dynadapt.dsl.aspect.Composition;
@@ -47,6 +51,7 @@ public class Adapter implements IAdapter {
 		modelsLocation = new HashMap<String, String>();
 		modelsLocation.put("aspects", "adaptability_models/");
 		modelsLocation.put("variants", "uml_models/variants/");
+		modelsLocation.put("base", "uml_models/base/");
 		modelsLocation.put("profiles", "uml_models/profiles/");
 		modelsLocation.put("patterns", "patterns/");
 		modelsLocation.put("features", "features/models/");
@@ -66,19 +71,20 @@ public class Adapter implements IAdapter {
 				//parser.parseAdaptationModel(aspects.get(0));
 				Stereotype role = null;
 				List<Pointcut> pointcuts = a.getPointcuts();
+				
+				HashMap<Stereotype, List<Element>> elements = new HashMap<>();
+				
 				for (Pointcut p : pointcuts) {
 					role = p.getRole();
+					elements.put(role, new ArrayList<>());
 					System.out.println("		Role: " + role.getName());
 					Collection<? extends IPatternMatch> matches = mq.query(
 							CorePatternLanguageHelper.getFullyQualifiedName(p.getPattern()), 
 							repository + modelsLocation.get("patterns") + "monitoring_reconfiguration_queries.vql");
-					List<Element> elements = new ArrayList<>();
 					for (IPatternMatch i : matches) {
-						elements.add((Element) i.get(0));
-					}
-					for (Element e : elements) {
-						System.out.println("			Applied to: " + e);
-						ma.stereotypeElement(e, p.getRole());
+						Element e = (Element) i.get(0);
+						System.out.println("			Element: " + e);
+						elements.get(role).add(e);
 					}
 				}
 				Model variant = a.getAdvice();
@@ -86,17 +92,33 @@ public class Adapter implements IAdapter {
 				//Select composition
 				Composition c = a.getCompositions().get(0);
 				
+				Model model;
+				
 				ActionOptionType actionOptionType = c.getAction();
 				if (actionOptionType instanceof UpdateValueImpl) {
-					Object value = actionOptionType.eGet(actionOptionType.eClass().getEStructuralFeature("value"));
-					ma.applyUpdateCompositionDirective(baseModel, value, role);
+					String value = actionOptionType.eGet(actionOptionType.eClass().getEStructuralFeature("value")).toString();
+					model = ma.applyUpdateCompositionDirective(baseModel, elements, value);
 				} else {
-					ma.applyCompositionDirective(a.getCompositions().get(0), baseModel, role, c.getAdvice(), variant);
+					model = ma.applyCompositionDirective(a.getCompositions().get(0), baseModel, elements, c.getAdvice(), variant);
 				}
+				System.out.println("Saving model : " + repository + modelsLocation.get("base") + "MonitoringSystemAdaptedBaseModel.uml");
+				save(model, URI.createURI(repository + modelsLocation.get("base") + "MonitoringSystemAdaptedBaseModel.uml"));
 			}
 		}
 				
 	}
+	
+	protected void save(Model model, URI uri) {
+
+		ResourceSet resourceSet = new ResourceSetImpl();
+       // UMLResourcesUtil.init(resourceSet);
+        Resource resource = resourceSet.createResource(uri);
+        resource.getContents().add(model);
+        try {
+            resource.save(null); // no save options needed
+        } catch (IOException ioe) {
+        }
+    }
 
 	private List<Feature> listFeatures(Feature root, String featureId) {
 		List<Feature> features = new ArrayList<>();
