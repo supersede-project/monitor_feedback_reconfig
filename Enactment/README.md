@@ -7,9 +7,11 @@ RecEn prototype consists of a number of components, as described in D4.8. This M
 - Monitoring Reconfiguration Models:
   - UML Base model
   - UML Variants
+  - ADM Profile 
   - Feature Model
   - Default Feature Configuration
   - UML VIATRA Queries
+  - Adaptability models (Aspects)
  
 - Monitoring Reconfiguration Adapter: Adapter for enacting monitoring reconfigurations at model level.
 
