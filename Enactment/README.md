@@ -1,5 +1,5 @@
 <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-# [![SUPERSEDE](../../images/SUPERSEDE-logo.png)](https://www.supersede.eu/) project 
+# [![SUPERSEDE](../images/SUPERSEDE-logo.png)](https://www.supersede.eu/) project 
 ## Monitoring Reconfiguration Enactment case platform (RecEn) Components
 
 RecEn prototype consists of a number of components, as described in D4.8. This M18 prototype includes first implementations for the following components:
@@ -21,4 +21,4 @@ Monitoring Reconfiguration Enactment case platform is licensed under the [Apache
 
 Main contacts: Marc Oriol <moriol@essi.upc.edu>, Edith Zavala <zavala@essi.upc.edu>
 
-<center>![Project funded by the European Union](../../images/european.union.logo.png)</center>
+<center>![Project funded by the European Union](../images/european.union.logo.png)</center>
