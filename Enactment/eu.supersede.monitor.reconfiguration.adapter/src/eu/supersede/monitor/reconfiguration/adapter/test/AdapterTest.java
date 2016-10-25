@@ -1,5 +1,6 @@
 package eu.supersede.monitor.reconfiguration.adapter.test;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,10 @@ import eu.supersede.dynadapt.model.ModelManager;
 import eu.supersede.dynadapt.modelrepository.repositoryaccess.ModelRepository;
 import eu.supersede.monitor.reconfiguration.adapter.Adapter;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.mwe.utils.StandaloneSetup;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
@@ -47,6 +52,7 @@ public class AdapterTest {
 		modelsLocation = new HashMap<String, String>();
 		modelsLocation.put("aspects", "adaptability_models/");
 		modelsLocation.put("variants", "uml_models/variants/");
+		modelsLocation.put("base", "uml_models/base/");
 		modelsLocation.put("profiles", "uml_models/profiles/");
 		modelsLocation.put("patterns", "patterns/");
 		modelsLocation.put("features", "features/models/");
@@ -66,33 +72,25 @@ public class AdapterTest {
 			FeatureModel featureModel = mm.loadFeatureModel(featureModelPath);
 			List<Aspect> a = mr.getAspectModels("timeSlot_twitter", modelsLocation);
 
-			adapter.adapt(featureModel, a.get(0), baseModel);
+			Model model = adapter.adapt(featureModel, a.get(0), baseModel);
+			
+			System.out.println("Saving model");
+			save(model, URI.createURI(repository + modelsLocation.get("base") + "MonitoringSystemAdaptedBaseModel.uml"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	protected void save(Model model, URI uri) {
 
-	/*@Test
-	public void validAspectLoading() {
-
-		List<Aspect> a = mr.getAspectModels("GooglePlay_API_GooglePlay", modelsLocation);
-		System.out.println(a.get(0).getFeature().getId());
-
-	}*/
-
-	/**
-	 * This test shows how from a SelectionSUPERSEDE of a FeatureConfigSUPERSEDE
-	 * model its corresponding adaptation models can be retrieved.
-	 */
-	/*
-	@Test
-	public void testGetValidFeatureAspectsForASelection() {
-		FeatureConfigSUPERSEDE fc = fcLAO.getFeatureConfigSUPERSEDE(featureConfigPath, featureModelPath);
-		String featureId = fc.getSelections().get(5).getFeature().getId();
-
-		List<Aspect> a = mr.getAspectModels(featureId, modelsLocation);
-
-		System.out.print(a.get(0).getFeature().getId());
-	}*/
+		ResourceSet resourceSet = new ResourceSetImpl();
+       // UMLResourcesUtil.init(resourceSet);
+        Resource resource = resourceSet.createResource(uri);
+        resource.getContents().add(model);
+        try {
+            resource.save(null); // no save options needed
+        } catch (IOException ioe) {
+        }
+    }
 
 }

@@ -58,9 +58,11 @@ public class Adapter implements IAdapter {
 	}
 
 	@Override
-	public void adapt(FeatureModel variability, Aspect adaptationModel, Model baseModel) throws Exception {
+	public Model adapt(FeatureModel variability, Aspect adaptationModel, Model baseModel) throws Exception {
 		
 		List<Feature> features = listFeatures(variability.getRoot(), adaptationModel.getFeature().getId());
+		
+		Model model = null;
 		
 		for (Feature f : features) {
 			System.out.println("Feature ID: " + f.getId());
@@ -68,7 +70,6 @@ public class Adapter implements IAdapter {
 			System.out.println("Adaptations for feature: " + aspects.size());
 			for (Aspect a : aspects) {
 				System.out.println("	Aspect name: " + a.getName());
-				//parser.parseAdaptationModel(aspects.get(0));
 				Stereotype role = null;
 				List<Pointcut> pointcuts = a.getPointcuts();
 				
@@ -78,9 +79,7 @@ public class Adapter implements IAdapter {
 					role = p.getRole();
 					elements.put(role, new ArrayList<>());
 					System.out.println("		Role: " + role.getName());
-					Collection<? extends IPatternMatch> matches = mq.query(
-							CorePatternLanguageHelper.getFullyQualifiedName(p.getPattern()), 
-							repository + modelsLocation.get("patterns") + "monitoring_reconfiguration_queries.vql");
+					Collection<? extends IPatternMatch> matches = mq.query(p.getPattern()); 
 					for (IPatternMatch i : matches) {
 						Element e = (Element) i.get(0);
 						System.out.println("			Element: " + e);
@@ -92,8 +91,6 @@ public class Adapter implements IAdapter {
 				//Select composition
 				Composition c = a.getCompositions().get(0);
 				
-				Model model;
-				
 				ActionOptionType actionOptionType = c.getAction();
 				if (actionOptionType instanceof UpdateValueImpl) {
 					String value = actionOptionType.eGet(actionOptionType.eClass().getEStructuralFeature("value")).toString();
@@ -101,24 +98,13 @@ public class Adapter implements IAdapter {
 				} else {
 					model = ma.applyCompositionDirective(a.getCompositions().get(0), baseModel, elements, c.getAdvice(), variant);
 				}
-				System.out.println("Saving model : " + repository + modelsLocation.get("base") + "MonitoringSystemAdaptedBaseModel.uml");
-				save(model, URI.createURI(repository + modelsLocation.get("base") + "MonitoringSystemAdaptedBaseModel.uml"));
+
 			}
 		}
-				
+			
+		return model;
+		
 	}
-	
-	protected void save(Model model, URI uri) {
-
-		ResourceSet resourceSet = new ResourceSetImpl();
-       // UMLResourcesUtil.init(resourceSet);
-        Resource resource = resourceSet.createResource(uri);
-        resource.getContents().add(model);
-        try {
-            resource.save(null); // no save options needed
-        } catch (IOException ioe) {
-        }
-    }
 
 	private List<Feature> listFeatures(Feature root, String featureId) {
 		List<Feature> features = new ArrayList<>();

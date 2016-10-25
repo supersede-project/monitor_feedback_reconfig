@@ -39,7 +39,7 @@
       <value xmi:type="uml:LiteralString" xmi:id="_jDKB4C1REeavvcSdbQigPQ" value="active"/>
     </slot>
     <slot xmi:id="_uSWj0CzFEeazLJ9R2W1UzA" definingFeature="_R5pfUCy5EealKu3_PJbmWg">
-      <value xmi:type="uml:LiteralInteger" xmi:id="_FCRBoJnwEeapmveMH9wtMg" name="" value="500">
+      <value xmi:type="uml:LiteralInteger" xmi:id="_MQCFEJqOEealXsU_kenIvw" name="" value="500">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </value>
     </slot>
@@ -74,7 +74,7 @@
       <value xmi:type="uml:LiteralString" xmi:id="_AmwXwC1UEeavvcSdbQigPQ" value="olympicGamesPlayer"/>
     </slot>
     <slot xmi:id="_DOZIYC1UEeavvcSdbQigPQ" definingFeature="_R5pfUCy5EealKu3_PJbmWg">
-      <value xmi:type="uml:LiteralInteger" xmi:id="_FCPzgJnwEeapmveMH9wtMg" name="" value="500">
+      <value xmi:type="uml:LiteralInteger" xmi:id="_MP_o0JqOEealXsU_kenIvw" name="" value="500">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </value>
     </slot>

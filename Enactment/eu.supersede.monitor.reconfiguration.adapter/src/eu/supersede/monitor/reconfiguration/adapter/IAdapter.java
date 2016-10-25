@@ -8,6 +8,6 @@ import eu.supersede.dynadapt.dsl.aspect.Aspect;
 
 public interface IAdapter {
 
-	public void adapt(FeatureModel variability, Aspect adaptationModel, Model baseModel) throws Exception;
+	public Model adapt(FeatureModel variability, Aspect adaptationModel, Model baseModel) throws Exception;
 	
 }
