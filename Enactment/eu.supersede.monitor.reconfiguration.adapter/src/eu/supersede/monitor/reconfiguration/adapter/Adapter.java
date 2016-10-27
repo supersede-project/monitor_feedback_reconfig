@@ -1,31 +1,46 @@
+/*******************************************************************************
+ * Copyright (c) 2016 Universitat Politécnica de Catalunya (UPC)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Contributors:
+ * 	Quim Motger (UPC) - main development
+ * 	
+ * Initially developed in the context of SUPERSEDE EU project
+ * www.supersede.eu
+ *******************************************************************************/
 package eu.supersede.monitor.reconfiguration.adapter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
-import org.eclipse.viatra.query.patternlanguage.helper.CorePatternLanguageHelper;
 
 import cz.zcu.yafmt.model.fm.Feature;
 import cz.zcu.yafmt.model.fm.FeatureModel;
 import eu.supersede.dynadapt.adapter.ModelAdapter;
 import eu.supersede.dynadapt.aom.dsl.parser.AdaptationParser;
 import eu.supersede.dynadapt.dsl.aspect.ActionOptionType;
-import eu.supersede.dynadapt.dsl.aspect.impl.UpdateValueImpl;
 import eu.supersede.dynadapt.dsl.aspect.Aspect;
 import eu.supersede.dynadapt.dsl.aspect.Composition;
 import eu.supersede.dynadapt.dsl.aspect.Pointcut;
+import eu.supersede.dynadapt.dsl.aspect.impl.UpdateValueImpl;
 import eu.supersede.dynadapt.model.ModelManager;
 import eu.supersede.dynadapt.model.query.ModelQuery;
 import eu.supersede.dynadapt.modelrepository.repositoryaccess.ModelRepository;
