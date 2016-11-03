@@ -1,0 +1,12 @@
+{
+    "configSender":"WP4",
+    "timeStamp": "2016-10-20T20:10:30:201",
+    "SocialNetworksMonitorConfiguration":{	
+         "timeSlot": "30",
+         "kafkaEndpoint": "http://localhost:9092",
+         "kafkaTopic": "TwitterAPI.1",
+         "keywordExpression": "(keyword1 OR keyword2) AND (keyword 3 OR keyword4 OR keyword5)",
+         "accounts": ["account1", "account2"],
+         "state": "ON"           
+	}	
+}
