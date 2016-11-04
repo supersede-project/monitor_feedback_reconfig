@@ -31,6 +31,8 @@ import org.apache.http.util.EntityUtils;
 
 import com.google.gson.JsonObject;
 
+import eu.supersede.monitor.reconfiguration.executor.model.MonitorInfo;
+
 public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 	
 	private final String host = "localhost:8080";
@@ -42,18 +44,21 @@ public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 	}
 
 	@Override
-	public void updateMonitorConfiguration(JsonObject inputJson, String monitorType, String monitorTool, String confId) throws Exception {
+	public void updateMonitorConfiguration(JsonObject inputJson) throws Exception {
 		
 		CloseableHttpClient client = HttpClientBuilder.create().build();
-		String parameterJson = "";
+
+		MonitorInfo monitorInfo = new MonitorInfo(inputJson);
 		
-		String url = host + "/monitors/" + monitorType + "/" + monitorTool + "/" + confId;
+		String url = host + "/monitors/" + monitorInfo.getMonitorType() + 
+				"/" + monitorInfo.getMonitorTool() + 
+				"/" + monitorInfo.getConfId();
 		String jsonString = inputJson.toString();
 		
 		HttpPut request = new HttpPut(url);
 		StringEntity params = new StringEntity(jsonString);
-			request.addHeader("content-type", "application/json");
-			request.setEntity(params);
+		request.addHeader("content-type", "application/json");
+		request.setEntity(params);
 		 
 		HttpResponse httpResponse = client.execute(request);
 		String mimeType = ContentType.getOrDefault(httpResponse.getEntity()).getMimeType();

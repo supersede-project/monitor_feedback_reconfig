@@ -1,7 +1,9 @@
 {
     "configSender":"WP4",
     "timeStamp": "2016-10-20T20:10:30:201",
-    "SocialNetworksMonitorConfiguration":{	
+    "SocialNetworks":{	
+    	 "id": "id1",
+    	 "toolName": "twitterAPI"
          "timeSlot": "30",
          "kafkaEndpoint": "http://localhost:9092",
          "kafkaTopic": "TwitterAPI.1",

@@ -47,7 +47,7 @@ public class MonitorReconfigExecutorTest {
 			String jsonString = IOUtils.toString(stream);
 			JsonObject jsonObject = (new JsonParser()).parse(jsonString).getAsJsonObject();
 			IMonitorReconfigExecutor executor = new MonitorReconfigExecutor();
-			executor.updateMonitorConfiguration(jsonObject, "SocialNetworksMonitor", "TwitterAPI", "1");
+			executor.updateMonitorConfiguration(jsonObject);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
