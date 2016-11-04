@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 import org.apache.log4j.Logger;
 import org.eclipse.uml2.uml.InstanceSpecification;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.viatra.query.runtime.api.IMatchProcessor;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
@@ -94,7 +93,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return matches represented as a MonitorsMatch object.
    * 
    */
-  public Collection<MonitorsMatch> getAllMatches(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+  public Collection<MonitorsMatch> getAllMatches(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
     return rawGetAllMatches(new Object[]{pClient, pSupplier, pGeneralization});
   }
   
@@ -107,7 +106,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return a match represented as a MonitorsMatch object, or null if no match is found.
    * 
    */
-  public MonitorsMatch getOneArbitraryMatch(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+  public MonitorsMatch getOneArbitraryMatch(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
     return rawGetOneArbitraryMatch(new Object[]{pClient, pSupplier, pGeneralization});
   }
   
@@ -120,7 +119,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return true if the input is a valid (partial) match of the pattern.
    * 
    */
-  public boolean hasMatch(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+  public boolean hasMatch(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
     return rawHasMatch(new Object[]{pClient, pSupplier, pGeneralization});
   }
   
@@ -132,7 +131,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return the number of pattern matches found.
    * 
    */
-  public int countMatches(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+  public int countMatches(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
     return rawCountMatches(new Object[]{pClient, pSupplier, pGeneralization});
   }
   
@@ -144,7 +143,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @param processor the action that will process each pattern match.
    * 
    */
-  public void forEachMatch(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization, final IMatchProcessor<? super MonitorsMatch> processor) {
+  public void forEachMatch(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization, final IMatchProcessor<? super MonitorsMatch> processor) {
     rawForEachMatch(new Object[]{pClient, pSupplier, pGeneralization}, processor);
   }
   
@@ -158,7 +157,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
    * 
    */
-  public boolean forOneArbitraryMatch(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization, final IMatchProcessor<? super MonitorsMatch> processor) {
+  public boolean forOneArbitraryMatch(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization, final IMatchProcessor<? super MonitorsMatch> processor) {
     return rawForOneArbitraryMatch(new Object[]{pClient, pSupplier, pGeneralization}, processor);
   }
   
@@ -172,7 +171,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return the (partial) match object.
    * 
    */
-  public MonitorsMatch newMatch(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+  public MonitorsMatch newMatch(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
     return MonitorsMatch.newMatch(pClient, pSupplier, pGeneralization);
   }
   
@@ -210,7 +209,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<InstanceSpecification> getAllValuesOfclient(final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+  public Set<InstanceSpecification> getAllValuesOfclient(final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
     return rawAccumulateAllValuesOfclient(new Object[]{
     null, 
     pSupplier, 
@@ -223,8 +222,8 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  protected Set<NamedElement> rawAccumulateAllValuesOfsupplier(final Object[] parameters) {
-    Set<NamedElement> results = new HashSet<NamedElement>();
+  protected Set<org.eclipse.uml2.uml.Class> rawAccumulateAllValuesOfsupplier(final Object[] parameters) {
+    Set<org.eclipse.uml2.uml.Class> results = new HashSet<org.eclipse.uml2.uml.Class>();
     rawAccumulateAllValues(POSITION_SUPPLIER, parameters, results);
     return results;
   }
@@ -234,7 +233,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<NamedElement> getAllValuesOfsupplier() {
+  public Set<org.eclipse.uml2.uml.Class> getAllValuesOfsupplier() {
     return rawAccumulateAllValuesOfsupplier(emptyArray());
   }
   
@@ -243,7 +242,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<NamedElement> getAllValuesOfsupplier(final MonitorsMatch partialMatch) {
+  public Set<org.eclipse.uml2.uml.Class> getAllValuesOfsupplier(final MonitorsMatch partialMatch) {
     return rawAccumulateAllValuesOfsupplier(partialMatch.toArray());
   }
   
@@ -252,7 +251,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<NamedElement> getAllValuesOfsupplier(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pGeneralization) {
+  public Set<org.eclipse.uml2.uml.Class> getAllValuesOfsupplier(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pGeneralization) {
     return rawAccumulateAllValuesOfsupplier(new Object[]{
     pClient, 
     null, 
@@ -294,7 +293,7 @@ public class MonitorsMatcher extends BaseMatcher<MonitorsMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<org.eclipse.uml2.uml.Class> getAllValuesOfgeneralization(final InstanceSpecification pClient, final NamedElement pSupplier) {
+  public Set<org.eclipse.uml2.uml.Class> getAllValuesOfgeneralization(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier) {
     return rawAccumulateAllValuesOfgeneralization(new Object[]{
     pClient, 
     pSupplier, 

@@ -6,7 +6,6 @@ package queries;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.uml2.uml.InstanceSpecification;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.query.runtime.api.impl.BasePatternMatch;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
@@ -29,13 +28,13 @@ import queries.util.MonitorsQuerySpecification;
 public abstract class MonitorsMatch extends BasePatternMatch {
   private InstanceSpecification fClient;
   
-  private NamedElement fSupplier;
+  private org.eclipse.uml2.uml.Class fSupplier;
   
   private org.eclipse.uml2.uml.Class fGeneralization;
   
   private static List<String> parameterNames = makeImmutableList("client", "supplier", "generalization");
   
-  private MonitorsMatch(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+  private MonitorsMatch(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
     this.fClient = pClient;
     this.fSupplier = pSupplier;
     this.fGeneralization = pGeneralization;
@@ -53,7 +52,7 @@ public abstract class MonitorsMatch extends BasePatternMatch {
     return this.fClient;
   }
   
-  public NamedElement getSupplier() {
+  public org.eclipse.uml2.uml.Class getSupplier() {
     return this.fSupplier;
   }
   
@@ -84,7 +83,7 @@ public abstract class MonitorsMatch extends BasePatternMatch {
     this.fClient = pClient;
   }
   
-  public void setSupplier(final NamedElement pSupplier) {
+  public void setSupplier(final org.eclipse.uml2.uml.Class pSupplier) {
     if (!isMutable()) throw new java.lang.UnsupportedOperationException();
     this.fSupplier = pSupplier;
   }
@@ -193,7 +192,7 @@ public abstract class MonitorsMatch extends BasePatternMatch {
    * @return the new, mutable (partial) match object.
    * 
    */
-  public static MonitorsMatch newMutableMatch(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+  public static MonitorsMatch newMutableMatch(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
     return new Mutable(pClient, pSupplier, pGeneralization);
   }
   
@@ -207,12 +206,12 @@ public abstract class MonitorsMatch extends BasePatternMatch {
    * @return the (partial) match object.
    * 
    */
-  public static MonitorsMatch newMatch(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+  public static MonitorsMatch newMatch(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
     return new Immutable(pClient, pSupplier, pGeneralization);
   }
   
   private static final class Mutable extends MonitorsMatch {
-    Mutable(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+    Mutable(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
       super(pClient, pSupplier, pGeneralization);
     }
     
@@ -223,7 +222,7 @@ public abstract class MonitorsMatch extends BasePatternMatch {
   }
   
   private static final class Immutable extends MonitorsMatch {
-    Immutable(final InstanceSpecification pClient, final NamedElement pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
+    Immutable(final InstanceSpecification pClient, final org.eclipse.uml2.uml.Class pSupplier, final org.eclipse.uml2.uml.Class pGeneralization) {
       super(pClient, pSupplier, pGeneralization);
     }
     
