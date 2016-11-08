@@ -1,1 +1,0 @@
-This folder contains code, artefacts, configuration, resources, and so on, developed for T4.3 and T4.4, that provides techniques and tools supporting the monitoring and feedback gathering reconfiguration enactment.

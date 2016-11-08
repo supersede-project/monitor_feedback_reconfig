@@ -1,0 +1,25 @@
+{
+"SocialNetworks":
+{"timeSlot":"300"
+,"kakfaEndpoint":"http://localhost:9092"
+,"toolName":"TwitterAPI"
+,"kafkaTopic":"olympicGamesTwitterMonitoring"
+,"accounts":"account1"
+,"state":"active"
+,"keywordExpression":"keyword1 AND keyword2"
+,"id":"id2"
+},
+"MarketPlaces":
+{"packageName":"olympicGamesPlayer"
+,"state":"active"
+,"timeSlot":"800"
+,"toolName":"GooglePlayAPI"
+,"KafkaEndpoint":"http://localhost:9092"
+,"kafkaTopic":"marketPlacesMonitoring"
+,"id":"id1"
+},
+"":
+{"timeStamp":"Sat June 08 02:16:57 2016"
+,"configSender":"WP4"
+},
+}
