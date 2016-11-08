@@ -21,6 +21,6 @@ This component takes the derived Json entries file to call the Orchestrator serv
 
 See deliverable D4.8 in [Supersede Portal](https://www.supersede.eu/) for more details about this framework, how to install and use it.
 
-Reconfiguration Enactor for Feedback Gathering is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+Feedback Gathering Reconfiguration is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
 Main contacts: Denisse Yessica Munante Arzapalo <munante@fbk.eu>
