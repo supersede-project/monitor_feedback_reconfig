@@ -7,7 +7,7 @@
     <input>
       <takesTypesFrom href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
     </input>
-    <imports href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0"/>
+    <imports href="../common/common.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="generateInstance2Json" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;"/>
       <body xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/6/Bag(String)">
@@ -60,7 +60,7 @@
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ValueSpecification"/>
             <initExpression xsi:type="mtl:QueryInvocation">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ValueSpecification"/>
-              <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getValueSlot"/>
+              <definition href="../common/common.emtl#/0/getValueSlot"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="aSlot" referredVariable="/0/generateInstance2Json/%.4/aSlot">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Slot"/>
               </argument>
@@ -71,7 +71,7 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Slot"/>
         </loopVariable>
         <iterSet xsi:type="mtl:QueryInvocation" eType="/6/Set(Slot)">
-          <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getSlots"/>
+          <definition href="../common/common.emtl#/0/getSlots"/>
           <argument xsi:type="ocl.ecore:VariableExp" name="anInstanceSpecification" referredVariable="/0/generateInstance2Json/anInstanceSpecification">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
           </argument>
@@ -140,7 +140,7 @@
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ValueSpecification"/>
             <initExpression xsi:type="mtl:QueryInvocation">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ValueSpecification"/>
-              <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getValueSlot"/>
+              <definition href="../common/common.emtl#/0/getValueSlot"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="aSlot" referredVariable="/0/generateInstance2JsonMonitor/%.2/aSlot">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Slot"/>
               </argument>
@@ -151,7 +151,7 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Slot"/>
         </loopVariable>
         <iterSet xsi:type="mtl:QueryInvocation" eType="/6/Set(Slot)">
-          <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getSlots"/>
+          <definition href="../common/common.emtl#/0/getSlots"/>
           <argument xsi:type="ocl.ecore:VariableExp" name="anInstanceSpecification" referredVariable="/0/generateInstance2JsonMonitor/anInstanceSpecification">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
           </argument>
@@ -222,9 +222,9 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getSlots"/>
+          <references href="../common/common.emtl#/0/getSlots"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/3/Set(Slot)"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../common/common.emtl#/3/Set(Slot)"/>
         <eParameters name="anInstance">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
         </eParameters>
@@ -234,7 +234,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getValueSlot"/>
+          <references href="../common/common.emtl#/0/getValueSlot"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ValueSpecification"/>
         <eParameters name="aSlot">

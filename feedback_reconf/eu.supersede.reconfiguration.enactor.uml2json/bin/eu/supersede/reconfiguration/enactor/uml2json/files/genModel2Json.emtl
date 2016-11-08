@@ -7,8 +7,8 @@
     <input>
       <takesTypesFrom href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
     </input>
-    <imports href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0"/>
-    <imports href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/files/genInstance2Json.emtl#/0"/>
+    <imports href="../common/common.emtl#/0"/>
+    <imports href="genInstance2Json.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="generateJsonfromInstance" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
       <body xsi:type="mtl:FileBlock" openMode="OverWrite">
@@ -17,7 +17,7 @@
           <body xsi:type="mtl:ForBlock">
             <body xsi:type="mtl:TemplateInvocation">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-              <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/files/genInstance2Json.emtl#/0/generateInstance2JsonMonitor"/>
+              <definition href="genInstance2Json.emtl#/0/generateInstance2JsonMonitor"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="anInstance" referredVariable="/0/generateJsonfromInstance/%.1/%.1/%/anInstance">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
               </argument>
@@ -27,7 +27,7 @@
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
             </loopVariable>
             <iterSet xsi:type="mtl:QueryInvocation" eType="/9/Sequence(InstanceSpecification)">
-              <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getInstanceSpecifications"/>
+              <definition href="../common/common.emtl#/0/getInstanceSpecifications"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="aModel" referredVariable="/0/generateJsonfromInstance/aModel">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
               </argument>
@@ -35,7 +35,7 @@
           </body>
           <ifExpr xsi:type="mtl:QueryInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-            <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getIfMonitor"/>
+            <definition href="../common/common.emtl#/0/getIfMonitor"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="aModel" referredVariable="/0/generateJsonfromInstance/aModel">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
             </argument>
@@ -45,7 +45,7 @@
           <body xsi:type="mtl:ForBlock">
             <body xsi:type="mtl:TemplateInvocation">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-              <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/files/genInstance2Json.emtl#/0/generateInstance2Json"/>
+              <definition href="genInstance2Json.emtl#/0/generateInstance2Json"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="anInstance" referredVariable="/0/generateJsonfromInstance/%.1/%.2/%/anInstance">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
               </argument>
@@ -55,7 +55,7 @@
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
             </loopVariable>
             <iterSet xsi:type="mtl:QueryInvocation" eType="/9/Sequence(InstanceSpecification)">
-              <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getInstanceSpecifications"/>
+              <definition href="../common/common.emtl#/0/getInstanceSpecifications"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="aModel" referredVariable="/0/generateJsonfromInstance/aModel">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
               </argument>
@@ -65,7 +65,7 @@
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
             <source xsi:type="mtl:QueryInvocation">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-              <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getIfMonitor"/>
+              <definition href="../common/common.emtl#/0/getIfMonitor"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="aModel" referredVariable="/0/generateJsonfromInstance/aModel">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
               </argument>
@@ -138,9 +138,9 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getInstanceSpecifications"/>
+          <references href="../common/common.emtl#/0/getInstanceSpecifications"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SequenceType" href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/3/Sequence(InstanceSpecification)"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../common/common.emtl#/3/Sequence(InstanceSpecification)"/>
         <eParameters name="aModel">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
         </eParameters>
@@ -150,7 +150,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/common/common.emtl#/0/getIfMonitor"/>
+          <references href="../common/common.emtl#/0/getIfMonitor"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="aModel">
@@ -162,7 +162,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/files/genInstance2Json.emtl#/0/generateInstance2Json"/>
+          <references href="genInstance2Json.emtl#/0/generateInstance2Json"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anInstanceSpecification">
@@ -174,7 +174,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/files/genInstance2Json.emtl#/0/generateInstance2JsonMonitor"/>
+          <references href="genInstance2Json.emtl#/0/generateInstance2JsonMonitor"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anInstanceSpecification">

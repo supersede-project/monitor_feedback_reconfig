@@ -7,13 +7,13 @@
     <input>
       <takesTypesFrom href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
     </input>
-    <imports href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/files/genModel2Json.emtl#/0"/>
+    <imports href="files/genModel2Json.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="generateJsonModel" visibility="Public" main="true">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;"/>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/files/genModel2Json.emtl#/0/generateJsonfromInstance"/>
+        <definition href="files/genModel2Json.emtl#/0/generateJsonfromInstance"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="aModel" referredVariable="/0/generateJsonModel/aModel">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
         </argument>
@@ -59,7 +59,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/eu.supersede.reconfiguration.enactor.uml2json/bin/eu/supersede/reconfiguration/enactor/uml2json/files/genModel2Json.emtl#/0/generateJsonfromInstance"/>
+          <references href="files/genModel2Json.emtl#/0/generateJsonfromInstance"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="aModel">
