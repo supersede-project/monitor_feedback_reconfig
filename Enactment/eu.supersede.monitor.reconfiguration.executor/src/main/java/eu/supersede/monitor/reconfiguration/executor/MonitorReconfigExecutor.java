@@ -23,6 +23,7 @@ package eu.supersede.monitor.reconfiguration.executor;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -32,10 +33,11 @@ import org.apache.http.util.EntityUtils;
 import com.google.gson.JsonObject;
 
 import eu.supersede.monitor.reconfiguration.executor.model.MonitorInfo;
+import eu.supersede.monitor.reconfiguration.executor.model.MonitorList;
 
 public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 	
-	private final String host = "localhost:8080";
+	private final String host = "http://localhost:8080";
 
 	@Override
 	public void addMonitorConfiguration(JsonObject inputJson) {
@@ -48,21 +50,31 @@ public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 		
 		CloseableHttpClient client = HttpClientBuilder.create().build();
 
-		MonitorInfo monitorInfo = new MonitorInfo(inputJson);
+		MonitorList monitorList = new MonitorList(inputJson);
 		
-		String url = host + "/monitors/" + monitorInfo.getMonitorType() + 
-				"/" + monitorInfo.getMonitorTool() + 
-				"/" + monitorInfo.getConfId();
-		String jsonString = inputJson.toString();
-		
-		HttpPut request = new HttpPut(url);
-		StringEntity params = new StringEntity(jsonString);
-		request.addHeader("content-type", "application/json");
-		request.setEntity(params);
-		 
-		HttpResponse httpResponse = client.execute(request);
-		String mimeType = ContentType.getOrDefault(httpResponse.getEntity()).getMimeType();
-		String jsonFromResponse = EntityUtils.toString(httpResponse.getEntity());
+		for (MonitorInfo monitor : monitorList.getMonitors()) {
+			
+			String url = host + "/monitors/" + monitor.getMonitorType() +
+					"/" + monitor.getMonitorTool() + 
+					"/" + monitor.getConfId();
+						
+			String jsonString = getOrchestratorJson(monitor, monitorList);
+			System.out.println("Sending json: " + jsonString);
+			
+			HttpPut request = new HttpPut(url);
+			StringEntity params = new StringEntity(jsonString);
+			request.addHeader("content-type", "application/json");
+			request.setEntity(params);
+			
+			try {
+				HttpResponse httpResponse = client.execute(request);
+			} catch (HttpHostConnectException e) {
+				System.out.println("Connection has been suspended due to failure connecting " + host + ". Aborting.");
+			}
+			//String mimeType = ContentType.getOrDefault(httpResponse.getEntity()).getMimeType();
+			//String jsonFromResponse = EntityUtils.toString(httpResponse.getEntity());
+			
+		}
 
 	}
 
@@ -70,6 +82,13 @@ public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 	public void deleteMonitorConfiguration(JsonObject inputJson) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private String getOrchestratorJson(MonitorInfo monitor, MonitorList list) {
+		JsonObject json = monitor.getJson();
+		json.addProperty("configSender", list.getConfigSender());
+		json.addProperty("timeStamp", list.getTimeStamp());
+		return json.toString();
 	}
 
 }

@@ -21,56 +21,45 @@
  *******************************************************************************/
 package eu.supersede.monitor.reconfiguration.executor.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
+
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-public class MonitorInfo {
-
-	private String monitorType;
+public class MonitorList {
 	
-	private String monitorTool;
+	private List<MonitorInfo> monitors;
 	
-	private String confId;
+	private String configSender;
 	
-	private JsonObject json;
+	private String timeStamp;
 	
-	public MonitorInfo(JsonObject json, String type) {
+	public MonitorList(JsonObject json) {
 		
-		this.monitorType = type;
-		this.monitorTool = json.get("toolName").getAsString();
-		this.confId = json.get("id").getAsString();
+		this.monitors = new ArrayList<>();
+		
+		this.configSender = json.getAsJsonObject("").get("configSender").getAsString();
+		this.timeStamp = json.getAsJsonObject("").get("timeStamp").getAsString();
+		
+		for (Entry<String, JsonElement> entry : json.entrySet()) {
 
-		this.json = new JsonObject();
+			if (!entry.getKey().equals("")) monitors.add(new MonitorInfo(entry.getValue().getAsJsonObject(), entry.getKey()));
 
-		this.json.add(this.monitorType, json);
-
+		}
 	}
 	
-	public String getMonitorType() {
-		return monitorType;
-	}
-
-	public void setMonitorType(String monitorType) {
-		this.monitorType = monitorType;
-	}
-
-	public String getMonitorTool() {
-		return monitorTool;
-	}
-
-	public void setMonitorTool(String monitorTool) {
-		this.monitorTool = monitorTool;
-	}
-
-	public String getConfId() {
-		return confId;
-	}
-
-	public void setConfId(String confId) {
-		this.confId = confId;
+	public List<MonitorInfo> getMonitors() {
+		return this.monitors;
 	}
 	
-	public JsonObject getJson() {
-		return json;
+	public String getConfigSender() {
+		return this.configSender;
+	}
+	
+	public String getTimeStamp() {
+		return this.timeStamp;
 	}
 	
 }
