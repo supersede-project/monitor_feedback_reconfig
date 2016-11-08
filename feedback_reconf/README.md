@@ -23,4 +23,4 @@ See deliverable D4.8 in [Supersede Portal](https://www.supersede.eu/) for more d
 
 Feedback Gathering Reconfiguration is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-Main contacts: Denisse Yessica Munante Arzapalo <munante@fbk.eu>
+Main contacts: Denisse Muñante <munante@fbk.eu>
