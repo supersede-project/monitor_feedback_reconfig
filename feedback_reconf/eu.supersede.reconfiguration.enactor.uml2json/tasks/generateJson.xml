@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generateJson" name="eu.supersede.reconfiguration.enactor.uml2json">
     <property name="ECLIPSE_HOME" value="../../../../../../eclipse/modeling-neon/eclipse"/>
-    <property name="ECLIPSE_WORKSPACE" value="../../../../../../workspaceModelTest"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../../../workspaceModel"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="eu.supersede.reconfiguration.enactor.uml2json.libraryclasspath">
