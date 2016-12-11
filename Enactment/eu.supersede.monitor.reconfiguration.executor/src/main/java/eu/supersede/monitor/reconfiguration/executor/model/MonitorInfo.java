@@ -39,9 +39,7 @@ public class MonitorInfo {
 		this.monitorTool = json.get("toolName").getAsString();
 		this.confId = json.get("id").getAsString();
 
-		this.json = new JsonObject();
-
-		this.json.add(this.monitorType, json);
+		this.json = json;
 
 	}
 	
