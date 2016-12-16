@@ -21,24 +21,15 @@
  *******************************************************************************/
 package eu.supersede.monitor.reconfiguration.executor;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.conn.HttpHostConnectException;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-
 import com.google.gson.JsonObject;
 
+import eu.supersede.integration.api.monitoring.orchestrator.proxies.MonitoringOrchestratorProxy;
+import eu.supersede.integration.api.monitoring.orchestrator.types.MonitorConfiguration;
 import eu.supersede.monitor.reconfiguration.executor.model.MonitorInfo;
 import eu.supersede.monitor.reconfiguration.executor.model.MonitorList;
 
 public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 	
-	private final String host = "http://localhost:8080";
-
 	@Override
 	public void addMonitorConfiguration(JsonObject inputJson) {
 		// TODO Auto-generated method stub
@@ -48,31 +39,17 @@ public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 	@Override
 	public void updateMonitorConfiguration(JsonObject inputJson) throws Exception {
 		
-		CloseableHttpClient client = HttpClientBuilder.create().build();
-
 		MonitorList monitorList = new MonitorList(inputJson);
 		
 		for (MonitorInfo monitor : monitorList.getMonitors()) {
 			
-			String url = host + "/monitors/" + monitor.getMonitorType() +
-					"/" + monitor.getMonitorTool() + 
-					"/" + monitor.getConfId();
-						
-			String jsonString = getOrchestratorJson(monitor, monitorList);
-			System.out.println("Sending json: " + jsonString);
+			MonitorConfiguration configuration = new MonitorConfiguration();
+			feedConfiguration(configuration,monitor);
+			configuration.setTimeStamp(monitorList.getTimeStamp());
+			configuration.setConfigSender(monitorList.getConfigSender());
 			
-			HttpPut request = new HttpPut(url);
-			StringEntity params = new StringEntity(jsonString);
-			request.addHeader("content-type", "application/json");
-			request.setEntity(params);
-			
-			try {
-				HttpResponse httpResponse = client.execute(request);
-			} catch (HttpHostConnectException e) {
-				System.out.println("Connection has been suspended due to failure connecting " + host + ". Aborting.");
-			}
-			//String mimeType = ContentType.getOrDefault(httpResponse.getEntity()).getMimeType();
-			//String jsonFromResponse = EntityUtils.toString(httpResponse.getEntity());
+			MonitoringOrchestratorProxy<?, ?> proxy = new MonitoringOrchestratorProxy<Object, Object>();
+			proxy.updateMonitorConfigurationForMonitorToolAndMonitorType(configuration, monitor.getMonitorTool(), monitor.getMonitorType());
 			
 		}
 
@@ -84,11 +61,22 @@ public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 		
 	}
 	
-	private String getOrchestratorJson(MonitorInfo monitor, MonitorList list) {
-		JsonObject json = monitor.getJson();
-		json.addProperty("configSender", list.getConfigSender());
-		json.addProperty("timeStamp", list.getTimeStamp());
-		return json.toString();
+	private void feedConfiguration(MonitorConfiguration configuration, MonitorInfo info) throws Exception{
+		JsonObject json = null;
+		if (info.getJson().get("SocialNetworks") != null) json = info.getJson().get("SocialNetworks").getAsJsonObject();
+		else if (info.getJson().get("MarketPlaces") != null) json = info.getJson().get("MarketPlaces").getAsJsonObject();
+		else throw new Exception("Wrong monitor type");
+		if (json.get("kafkaEndpoint") != null) configuration.setKafkaEndpoint(json.get("kafkaEndpoint").getAsString());
+		if (json.get("kafkaTopic") != null) configuration.setKafkaTopic(json.get("kafkaTopic").getAsString());
+		if (json.get("keywordExpression") != null) configuration.setKeywordExpression(json.get("keywordExpression").getAsString());
+		if (json.get("state") != null) configuration.setState(json.get("state").getAsString());
+		if (json.get("kafkaEndpoint") != null) configuration.setKafkaEndpoint(json.get("kafkaEndpoint").getAsString());
+		if (json.get("id") != null) configuration.setId(Integer.parseInt(json.get("id").getAsString()));
+		if (json.get("kafkaEndpoint") != null) configuration.setKafkaEndpoint(json.get("kafkaEndpoint").getAsString());
+		if (json.get("timeSlot") != null) configuration.setTimeSlot(json.get("timeSlot").getAsString());
+		if (json.get("packageName") != null) configuration.setKafkaEndpoint(json.get("packageName").getAsString());
+		if (json.get("appId") != null) configuration.setKafkaEndpoint(json.get("appId").getAsString());
+		System.out.println(configuration.getId());
 	}
 
 }
