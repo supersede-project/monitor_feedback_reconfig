@@ -21,6 +21,9 @@
  *******************************************************************************/
 package eu.supersede.monitor.reconfiguration.executor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.JsonObject;
 
 import eu.supersede.integration.api.monitoring.orchestrator.proxies.MonitoringOrchestratorProxy;
@@ -29,6 +32,8 @@ import eu.supersede.monitor.reconfiguration.executor.model.MonitorInfo;
 import eu.supersede.monitor.reconfiguration.executor.model.MonitorList;
 
 public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
+	
+	private final static Logger log = LoggerFactory.getLogger(MonitorReconfigExecutor.class);
 	
 	@Override
 	public void addMonitorConfiguration(JsonObject inputJson) {
@@ -47,12 +52,10 @@ public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 			feedConfiguration(configuration,monitor);
 			configuration.setTimeStamp(monitorList.getTimeStamp());
 			configuration.setConfigSender(monitorList.getConfigSender());
-			
+			log.debug("Generating a reconfiguration for " + monitor.getMonitorType() + " monitor with " + monitor.getMonitorTool() + " tool");
 			MonitoringOrchestratorProxy<?, ?> proxy = new MonitoringOrchestratorProxy<Object, Object>();
 			proxy.updateMonitorConfigurationForMonitorToolAndMonitorType(configuration, monitor.getMonitorTool(), monitor.getMonitorType());
-			
 		}
-
 	}
 
 	@Override
@@ -76,7 +79,6 @@ public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 		if (json.get("timeSlot") != null) configuration.setTimeSlot(json.get("timeSlot").getAsString());
 		if (json.get("packageName") != null) configuration.setKafkaEndpoint(json.get("packageName").getAsString());
 		if (json.get("appId") != null) configuration.setKafkaEndpoint(json.get("appId").getAsString());
-		System.out.println(configuration.getId());
 	}
 
 }

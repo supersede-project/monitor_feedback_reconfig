@@ -24,14 +24,20 @@ package eu.supersede.monitor.reconfiguration.enacter;
 import java.io.File;
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import eu.supersede.monitor.reconfiguration.enacter.test.EnacterTest;
 import eu.supersede.monitor.reconfiguration.executor.IMonitorReconfigExecutor;
 import eu.supersede.monitor.reconfiguration.executor.MonitorReconfigExecutor;
 import eu.supersede.reconfiguration.enactor.uml2json.Uml2Json;
 
 public class Enacter implements IEnacter {
+	
+	private final static Logger log = LoggerFactory.getLogger(Enacter.class);
 	
 	IMonitorReconfigExecutor executor;
 	
@@ -43,13 +49,14 @@ public class Enacter implements IEnacter {
 	public void applyUpdateEnactment(String absoluteSourcePath, String sourceModel, String absoluteTargetFolderPath) throws Exception {
 		
 		Uml2Json.deriveUMLToJsonInFolder(absoluteSourcePath + sourceModel, absoluteTargetFolderPath);
-		
+		log.debug("UML transformed in JSON file and stored at: " + absoluteTargetFolderPath + sourceModel.split(".")[0] + ".txt");
 		String jsonFileName = absoluteTargetFolderPath + sourceModel.split(".")[0] + ".txt";
 		
 		String json = new Scanner(new File(jsonFileName)).useDelimiter("\\Z").next();
 		JsonObject jsonObject = (new JsonParser()).parse(json).getAsJsonObject();
 		
 		executor.updateMonitorConfiguration(jsonObject);
+		log.debug("Monitor updated correctly");
 		
 	}
 
