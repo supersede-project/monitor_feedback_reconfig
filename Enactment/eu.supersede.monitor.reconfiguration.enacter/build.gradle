@@ -21,8 +21,10 @@ repositories {
 dependencies {
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
 	compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
+	
+	compile 'log4j:log4j:1.2.17'
+	compile files ('./lib/feedback_library.jar')
     
-
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add

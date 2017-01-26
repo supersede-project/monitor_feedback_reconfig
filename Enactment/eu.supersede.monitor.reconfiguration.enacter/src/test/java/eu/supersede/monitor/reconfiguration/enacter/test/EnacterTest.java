@@ -36,19 +36,15 @@ public class EnacterTest {
 	@Before
 	public void setUp() {
 		absoluteSourcePath = "src/test/java/eu/supersede/monitor/reconfiguration/enacter/test/";
-		sourceModel = "MonitoringSystemAdaptedModel.uml";
+		sourceModel = "MonitoringSystemBaseModel.uml";
 		absoluteTargetFolderPath = "json/";
 	}
 
 	@Test
-	public void updateMonitoringEnactment() {
+	public void updateMonitoringEnactment() throws Exception {
 		
 		IEnacter enacter = new Enacter();
-		try {
-			enacter.applyUpdateEnactment(absoluteSourcePath, sourceModel, absoluteTargetFolderPath);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		enacter.applyUpdateEnactment(absoluteSourcePath, sourceModel, absoluteTargetFolderPath);
 		
 	}
 	

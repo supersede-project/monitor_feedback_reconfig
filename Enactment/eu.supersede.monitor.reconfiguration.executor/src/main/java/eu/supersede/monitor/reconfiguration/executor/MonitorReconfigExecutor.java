@@ -21,8 +21,8 @@
  *******************************************************************************/
 package eu.supersede.monitor.reconfiguration.executor;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.google.gson.JsonObject;
 
@@ -33,7 +33,7 @@ import eu.supersede.monitor.reconfiguration.executor.model.MonitorList;
 
 public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 	
-	private final static Logger log = LoggerFactory.getLogger(MonitorReconfigExecutor.class);
+	private final static Logger log = LogManager.getLogger(MonitorReconfigExecutor.class);
 	
 	@Override
 	public void addMonitorConfiguration(JsonObject inputJson) {
@@ -43,11 +43,10 @@ public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 
 	@Override
 	public void updateMonitorConfiguration(JsonObject inputJson) throws Exception {
-		
+		log.debug("Started monitor reconfiguration executor");
 		MonitorList monitorList = new MonitorList(inputJson);
-		
+		log.debug("Parsed update JSON object with " + monitorList.getMonitors().size() + " reconfigurations");
 		for (MonitorInfo monitor : monitorList.getMonitors()) {
-			
 			MonitorConfiguration configuration = new MonitorConfiguration();
 			feedConfiguration(configuration,monitor);
 			configuration.setTimeStamp(monitorList.getTimeStamp());
