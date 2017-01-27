@@ -17,3 +17,6 @@ include 'services:webservice'
 */
 
 rootProject.name = 'eu.supersede.monitor.reconfiguration.enacter'
+
+include ':eu.supersede.monitor.reconfiguration.executor'
+project(':eu.supersede.monitor.reconfiguration.executor').projectDir = new File(settingsDir, '../eu.supersede.monitor.reconfiguration.executor')
