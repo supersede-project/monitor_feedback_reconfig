@@ -1,0 +1,14 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>eu.supersede.feedbackgathering.reconfiguration</groupId>
+    <artifactId>eu.supersede.feedbackgathering.reconfiguration.bundles</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>eu.supersede.feedbackgathering.reconfiguration</groupId>
+        <artifactId>eu.supersede.feedbackgathering.reconfiguration.root</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+	<relativePath>../Maven/eu.supersede.feedbackgathering.reconfiguration/pom.xml</relativePath>
+    </parent>
+</project>
