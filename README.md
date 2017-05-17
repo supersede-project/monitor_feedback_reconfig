@@ -13,6 +13,6 @@ Monitoring and Feedback Gathering Reconfiguration Enactment platform is licensed
 
 *Please check the respective README.md for details.*
 
-Main contact: Edith Zavala <zavala@essi.upc.edu>, Denisse Munante <munante@fbk.eu>
+Main contact: Marc Oriol <moriol@essi.upc.edu>, Edith Zavala <zavala@essi.upc.edu>, Denisse Munante <munante@fbk.eu>
 
 <center>![Project funded by the European Union](images/european.union.logo.png)</center>
