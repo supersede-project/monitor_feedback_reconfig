@@ -1,0 +1,18 @@
+<project>
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>eu.supersede.feedbackgathering.reconfiguration</groupId>
+ <artifactId>eu.supersede.feedbackgathering.reconfiguration.root</artifactId>
+ <version>1.0.0-SNAPSHOT</version>
+ <packaging>pom</packaging>
+ <parent>
+   <groupId>eu.supersede.feedbackgathering.reconfiguration</groupId>
+   <artifactId>eu.supersede.feedbackgathering.reconfiguration.configuration</artifactId>
+   <version>1.0.0-SNAPSHOT</version>
+  <relativePath>./releng/eu.supersede.feedbackgathering.reconfiguration.configuration</relativePath>
+ </parent>
+
+ <modules>
+   <module>bundles</module>
+   <module>releng</module>
+ </modules>
+</project>
