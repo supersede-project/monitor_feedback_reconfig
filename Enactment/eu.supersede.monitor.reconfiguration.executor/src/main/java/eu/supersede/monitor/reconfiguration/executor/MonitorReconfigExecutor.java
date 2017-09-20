@@ -30,6 +30,8 @@ import eu.supersede.integration.api.monitoring.orchestrator.proxies.MonitoringOr
 import eu.supersede.integration.api.monitoring.orchestrator.types.MonitorConfiguration;
 import eu.supersede.monitor.reconfiguration.executor.model.MonitorInfo;
 import eu.supersede.monitor.reconfiguration.executor.model.MonitorList;
+import eu.supersede.monitor.reconfiguration.executor.IMonitorReconfigExecutor;
+import eu.supersede.monitor.reconfiguration.executor.MonitorReconfigExecutor;
 
 public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 	
