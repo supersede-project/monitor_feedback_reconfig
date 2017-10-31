@@ -5,10 +5,10 @@
 	},
 	"HttpMonitor": {
 		"kafkaEndpoint":"http://localhost:9092/",
-		"timeSlot":"30",
+		"timeSlot":"100",
 		"kafkaTopic":"http-kafka-topic",
 		"toolName":"ApacheHttp",
 		"url":"http://lab-supersede.atos-sports.tv:8000/handshake_test.php",
-		"id":"1"
+		"method": "GET"
 	}
 }
