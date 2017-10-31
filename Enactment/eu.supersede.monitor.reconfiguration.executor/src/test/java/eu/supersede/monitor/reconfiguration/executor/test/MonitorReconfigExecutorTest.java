@@ -43,11 +43,11 @@ public class MonitorReconfigExecutorTest {
 	@Test
 	public void updateMonitorConfig() {
 		try {
-			InputStream stream = this.getClass().getResourceAsStream("update_monitor.json");
+			InputStream stream = this.getClass().getResourceAsStream("scenario1.json");
 			String jsonString = IOUtils.toString(stream);
 			JsonObject jsonObject = (new JsonParser()).parse(jsonString).getAsJsonObject();
 			IMonitorReconfigExecutor executor = new MonitorReconfigExecutor();
-			executor.updateMonitorConfiguration(jsonObject);
+			executor.executeMonitorReconfiguration(jsonObject);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

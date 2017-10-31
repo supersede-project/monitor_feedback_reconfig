@@ -45,7 +45,8 @@ public class MonitorList {
 		
 		for (Entry<String, JsonElement> entry : json.entrySet()) {
 
-			if (!entry.getKey().equals("")) monitors.add(new MonitorInfo(entry.getValue().getAsJsonObject(), entry.getKey()));
+			if (!entry.getKey().equals("")) 
+				monitors.add(new MonitorInfo(entry.getValue().getAsJsonObject(), entry.getKey()));
 
 		}
 	}

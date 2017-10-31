@@ -40,6 +40,8 @@ import org.apache.log4j.Logger;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import cz.zcu.yafmt.model.fc.FeatureConfiguration;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.uml2.uml.Model;
 
@@ -101,7 +103,7 @@ public class MonitoringEnactor implements IEnactor {
 		
 		JsonObject jsonObject = (new JsonParser()).parse(json).getAsJsonObject();
 		
-		//executor.updateMonitorConfiguration(jsonObject);
+		executor.executeMonitorReconfiguration(jsonObject);
 		System.out.println(jsonObject);
 		log.debug("Monitor updated correctly");
 		
@@ -138,26 +140,15 @@ public class MonitoringEnactor implements IEnactor {
 		return temp;
 	}
 
-	public void applyUpdateEnactment(String absoluteSourcePath, String sourceModel, String absoluteTargetFolderPath) throws Exception {
-		
-		String fileName = sourceModel.split("\\.")[0];
-		Uml2Json.deriveUMLToJsonInFolder(absoluteSourcePath + sourceModel, absoluteTargetFolderPath);
-		log.debug("UML transformed in JSON file and stored at: " + absoluteTargetFolderPath + fileName + ".txt");
-		String jsonFileName = absoluteTargetFolderPath + fileName + ".txt";
-		
-		String json = new Scanner(new File(jsonFileName)).useDelimiter("\\Z").next();
-		//FIXME generated json has an extra comma at the closing
-		json = json.replace(",\n}", "\n}");
-		
-		JsonObject jsonObject = (new JsonParser()).parse(json).getAsJsonObject();
-		
-		executor.updateMonitorConfiguration(jsonObject);
-		log.debug("Monitor updated correctly");
+
+	@Override
+	public void enactAdaptedModel(Model adaptedModel, boolean demo) throws Exception {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void enactAdaptedModel(Model adaptedModel, boolean demo) throws Exception {
+	public void enactFeatureConfiguration(FeatureConfiguration newFeatureConfig, boolean demo) {
 		// TODO Auto-generated method stub
 		
 	}
