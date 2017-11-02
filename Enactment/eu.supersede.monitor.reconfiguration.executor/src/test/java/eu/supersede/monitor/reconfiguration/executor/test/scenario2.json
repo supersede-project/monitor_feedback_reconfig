@@ -4,6 +4,7 @@
 		"configSender":"WP4"
 	},
 	"QoS": {
+		"id":"2",
 		"timeSlot":"100",
 		"kafkaTopic":"http-kafka-topic",
 		"toolName":"ApacheHttp",

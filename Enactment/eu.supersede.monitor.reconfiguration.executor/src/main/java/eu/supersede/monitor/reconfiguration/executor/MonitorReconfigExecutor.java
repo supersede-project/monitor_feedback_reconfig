@@ -49,9 +49,11 @@ public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 			MonitoringOrchestratorProxy<?, ?> proxy = new MonitoringOrchestratorProxy<Object, Object>();
 			switch (monitor.getOperation()) {
 				case CREATE:
+					log.debug("Create new configuration");
 					proxy.createMonitorConfigurationForMonitorToolAndMonitorType(monitor.getConfiguration(), monitor.getMonitorTool(), monitor.getMonitorType());
 					break;
 				case UPDATE:
+					log.debug("Update configuration");
 					proxy.updateMonitorConfigurationForMonitorToolAndMonitorType(monitor.getConfiguration(), monitor.getMonitorTool(), monitor.getMonitorType());
 					break;
 				case DELETE:

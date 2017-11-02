@@ -21,6 +21,7 @@
  *******************************************************************************/
 package eu.supersede.monitor.reconfiguration.executor.test;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
@@ -41,16 +42,35 @@ public class MonitorReconfigExecutorTest {
 	}
 	
 	@Test
-	public void updateMonitorConfig() {
+	public void UCTest() {
+		scenario1();
+		scenario2();
+	}
+	
+	private void scenario1() {
 		try {
-			InputStream stream = this.getClass().getResourceAsStream("scenario1.json");
-			String jsonString = IOUtils.toString(stream);
-			JsonObject jsonObject = (new JsonParser()).parse(jsonString).getAsJsonObject();
+			JsonObject jsonObject = getJSON("scenario1.json");
+			IMonitorReconfigExecutor executor = new MonitorReconfigExecutor();
+			executor.executeMonitorReconfiguration(jsonObject);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  
+	}
+	
+	private void scenario2() {
+		try {
+			JsonObject jsonObject = getJSON("scenario2.json");
 			IMonitorReconfigExecutor executor = new MonitorReconfigExecutor();
 			executor.executeMonitorReconfiguration(jsonObject);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
+	}
+	
+	private JsonObject getJSON(String fileName) throws IOException {
+		InputStream stream = this.getClass().getResourceAsStream(fileName);
+		String jsonString = IOUtils.toString(stream);
+		return (new JsonParser()).parse(jsonString).getAsJsonObject();
 	}
 	
 }
