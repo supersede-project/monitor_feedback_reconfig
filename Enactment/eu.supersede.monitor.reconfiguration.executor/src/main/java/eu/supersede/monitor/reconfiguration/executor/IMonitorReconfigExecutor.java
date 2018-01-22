@@ -25,10 +25,12 @@ import com.google.gson.JsonObject;
 
 public interface IMonitorReconfigExecutor {
 	
-	public void addMonitorConfiguration(JsonObject inputJson) throws Exception;
+	public void executeMonitorReconfiguration(JsonObject inputJson) throws Exception;
+	
+/*	public void addMonitorConfiguration(JsonObject inputJson) throws Exception;
 	
 	public void updateMonitorConfiguration(JsonObject inputJson) throws Exception;
 	
-	public void deleteMonitorConfiguration(JsonObject inputJson) throws Exception;
+	public void deleteMonitorConfiguration(JsonObject inputJson) throws Exception;*/
 
 }

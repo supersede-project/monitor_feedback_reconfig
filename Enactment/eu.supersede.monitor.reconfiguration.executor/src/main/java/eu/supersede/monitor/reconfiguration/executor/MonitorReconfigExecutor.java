@@ -21,74 +21,48 @@
  *******************************************************************************/
 package eu.supersede.monitor.reconfiguration.executor;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.conn.HttpHostConnectException;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.google.gson.JsonObject;
 
+import eu.supersede.integration.api.monitoring.orchestrator.proxies.MonitoringOrchestratorProxy;
+import eu.supersede.integration.api.monitoring.orchestrator.types.MonitorConfiguration;
 import eu.supersede.monitor.reconfiguration.executor.model.MonitorInfo;
 import eu.supersede.monitor.reconfiguration.executor.model.MonitorList;
+import eu.supersede.monitor.reconfiguration.executor.IMonitorReconfigExecutor;
+import eu.supersede.monitor.reconfiguration.executor.MonitorReconfigExecutor;
 
 public class MonitorReconfigExecutor implements IMonitorReconfigExecutor {
 	
-	private final String host = "http://localhost:8080";
-
+	private final static Logger log = LogManager.getLogger(MonitorReconfigExecutor.class);
+	
 	@Override
-	public void addMonitorConfiguration(JsonObject inputJson) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateMonitorConfiguration(JsonObject inputJson) throws Exception {
-		
-		CloseableHttpClient client = HttpClientBuilder.create().build();
-
+	public void executeMonitorReconfiguration(JsonObject inputJson) throws Exception {
+		log.debug("Started monitor reconfiguration executor");
 		MonitorList monitorList = new MonitorList(inputJson);
-		
+		log.debug("Parsed update JSON object with " + monitorList.getMonitors().size() + " reconfigurations");
 		for (MonitorInfo monitor : monitorList.getMonitors()) {
-			
-			String url = host + "/monitors/" + monitor.getMonitorType() +
-					"/" + monitor.getMonitorTool() + 
-					"/" + monitor.getConfId();
-						
-			String jsonString = getOrchestratorJson(monitor, monitorList);
-			System.out.println("Sending json: " + jsonString);
-			
-			HttpPut request = new HttpPut(url);
-			StringEntity params = new StringEntity(jsonString);
-			request.addHeader("content-type", "application/json");
-			request.setEntity(params);
-			
-			try {
-				HttpResponse httpResponse = client.execute(request);
-			} catch (HttpHostConnectException e) {
-				System.out.println("Connection has been suspended due to failure connecting " + host + ". Aborting.");
+			monitor.getConfiguration().setTimeStamp(monitorList.getTimeStamp());
+			monitor.getConfiguration().setConfigSender(monitorList.getConfigSender());
+			monitor.getConfiguration().setState("active");
+			log.debug("Generating a reconfiguration for " + monitor.getMonitorType() + " monitor with " + monitor.getMonitorTool() + " tool");
+			MonitoringOrchestratorProxy<?, ?> proxy = new MonitoringOrchestratorProxy<Object, Object>();
+			switch (monitor.getOperation()) {
+				case CREATE:
+					log.debug("Create new configuration");
+					proxy.createMonitorConfigurationForMonitorToolAndMonitorType(monitor.getConfiguration(), monitor.getMonitorTool(), monitor.getMonitorType());
+					break;
+				case UPDATE:
+					log.debug("Update configuration");
+					proxy.updateMonitorConfigurationForMonitorToolAndMonitorType(monitor.getConfiguration(), monitor.getMonitorTool(), monitor.getMonitorType());
+					break;
+				case DELETE:
+					throw new Exception("Not supported operation at executor");
+				default:
+					throw new Exception("Not supported operation at executor");
 			}
-			//String mimeType = ContentType.getOrDefault(httpResponse.getEntity()).getMimeType();
-			//String jsonFromResponse = EntityUtils.toString(httpResponse.getEntity());
-			
 		}
-
-	}
-
-	@Override
-	public void deleteMonitorConfiguration(JsonObject inputJson) {
-		// TODO Auto-generated method stub
-		
 	}
 	
-	private String getOrchestratorJson(MonitorInfo monitor, MonitorList list) {
-		JsonObject json = monitor.getJson();
-		json.addProperty("configSender", list.getConfigSender());
-		json.addProperty("timeStamp", list.getTimeStamp());
-		return json.toString();
-	}
-
 }
